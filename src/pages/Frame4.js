@@ -28,10 +28,10 @@ const Frame4 = () => {
           <div className={styles.groupChild1} />
           <div className={styles.div3}>성별</div>
           <div className={styles.groupChild2} style={(sex === "M" ? {backgroundColor: "#ff7979"} : {backgroundColor: "#e2e2e2"})} onClick={() => setSex("M")} />
-          <div className={styles.div4} style={{backgroundColor: "transparent"}}>남</div>
+          <div className={styles.div4} style={{backgroundColor: "transparent"}} onClick={() => setSex("M")}>남</div>
 
           <div className={styles.groupChild3} style={(sex === "F" ? {backgroundColor: "#ff7979"} : {backgroundColor: "#e2e2e2"})} onClick={() => setSex("F")} />
-          <div className={styles.div5} style={{backgroundColor: "transparent"}}>여</div>
+          <div className={styles.div5} style={{backgroundColor: "transparent"}} onClick={() => setSex("F")}>여</div>
 
           <Link to="/symptom" onClick={(e) => {if (sex == null) e.preventDefault()}}>
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />
