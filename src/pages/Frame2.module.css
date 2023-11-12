@@ -100,6 +100,7 @@
   background-color: var(--color-gainsboro-200);
   border: none;
   padding-left: 10px;
+  border-radius: var(--br-8xs);
 }
 .department_input::placeholder {
   color: #6a6a6a;
