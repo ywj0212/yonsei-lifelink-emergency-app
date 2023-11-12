@@ -266,14 +266,6 @@ const Frame1 = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.div21}>
-              <div className={styles.child} />
-              <div className={styles.div22}>
-                <p className={styles.p}>환자</p>
-                <p className={styles.p}>정보</p>
-                <p className={styles.p}>수정</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
