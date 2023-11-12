@@ -1,66 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 body {
   margin: 0;
   line-height: normal;
 }
 :root {
   /* fonts */
-  --font-baloo-bhaijaan: "Baloo Bhaijaan";
-  --font-roboto: Roboto;
   --font-inter: Inter;
+  --font-baloo-bhaijaan: "Baloo Bhaijaan";
 
   /* font sizes */
   --font-size-xs: 12px;
-  --font-size-2xs-6: 10.6px;
-  --font-size-3xs-1: 9.1px;
-  --font-size-base-2: 15.2px;
-  --font-size-91xl: 110px;
-  --font-size-80xl: 96px;
-  --font-size-xl: 20px;
-  --font-size-base: 16px;
-  --font-size-sm: 14px;
-  --font-size-5xs: 8px;
+  --font-size-2xs: 11px;
+  --font-size-smi: 13px;
   --font-size-3xs: 10px;
+  --font-size-4xs: 9px;
+  --font-size-xl: 20px;
+  --font-size-5xl: 24px;
+  --font-size-5xs: 8px;
+  --font-size-base: 16px;
+  --font-size-mini: 15px;
+  --font-size-sm: 14px;
 
   /* Colors */
   --color-white: #fff;
-  --color-black: #000;
-  --color-whitesmoke: #f1f1f1;
-  --color-whitesmoke-100: #f0f0f0;
-  --color-whitesmoke-200: #f0f0f0;
-  --color-gainsboro: #d9d9d9;
-  --color-darkslateblue: #1c3472;
-  --color-dimgray: #747474;
-  --color-dimgray-100: #505050;
-  --color-gold: #ffcf25;
-  --color-lightpink: #ffb3b3;
-  --color-red: #ff0202;
-  --color-red-100: #e60012;
-  --color-red-200: #e60012;
-  --color-pink: #ff4c4c;
-  --color-silver-100: #c2c2c2;
-  --color-silver-200: #bfbfbf;
+  --color-darkslategray-100: #464646;
+  --color-darkslategray-200: #424242;
+  --color-darkslategray-300: #3a3a3a;
   --color-limegreen-100: #2eb300;
+  --color-limegreen-200: #2eb200;
+  --color-dimgray-100: #747474;
+  --color-dimgray-200: #505050;
+  --color-black: #000;
+  --color-gainsboro-100: #e2e2e2;
+  --color-gainsboro-200: #e1e1e1;
+  --color-gainsboro-300: #d9d9d9;
+  --color-royalblue-100: #577cff;
+  --color-royalblue-200: #357aff;
   --color-darkorange: #ff7a00;
-  --color-royalblue: #357aff;
-  --color-khaki: #ffe976;
+  --color-tomato: #ff4d4d;
+  --color-whitesmoke-100: #f6f6f6;
+  --color-whitesmoke-200: #f1f1f1;
+  --color-red: #e60012;
+  --color-silver: #bfbfbf;
+  --color-navajowhite: #ffcd9f;
+  --color-palegoldenrod: #d0ffba;
+  --color-lightpink: #ffb3b3;
+  --color-lightsteelblue: #c8dbff;
 
   /* Paddings */
-  --padding-11xs-5: 1.5px;
-  --padding-9xs-8: 3.8px;
-  --padding-3xs: 10px;
+  --padding-11xl: 30px;
+  --padding-4xl: 23px;
   --padding-11xs: 2px;
   --padding-8xs: 5px;
 
   /* Border radiuses */
-  --br-5xs: 8px;
-  --br-40xl: 59px;
-  --br-3xs: 10px;
-  --br-xl: 20px;
-  --br-10xs: 3px;
-  --br-8xs: 5px;
   --br-11xs: 2px;
-  --br-33xl: 40px;
+  --br-xl: 20px;
+  --br-3xs: 10px;
+  --br-40xl: 59px;
+  --br-8xs: 5px;
+  --br-lgi: 19px;
+  --br-mid: 17px;
 }
