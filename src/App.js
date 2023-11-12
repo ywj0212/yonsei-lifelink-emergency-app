@@ -35,41 +35,45 @@ function App() {
     let metaDescription = "";
 
     switch (pathname) {
-      case "/":
-        title = "";
-        metaDescription = "";
+      case "/main":
+        title = "Life-Link 구조대원 앱 메인페이지";
+        metaDescription = "주변 병원 목록 표시, 메인페이지";
         break;
-      case "/":
-        title = "";
-        metaDescription = "";
+      case "/hospital-detail":
+        title = "Life-Link 병원 상세 정보";
+        metaDescription = "병원 병상 현황, 의료진 현황 검색";
         break;
-      case "/1":
-        title = "";
-        metaDescription = "";
+      case "/pati-info":
+        title = "Life-Link 환자 정보 입력";
+        metaDescription = "환자 인적사항 입력";
+        break;
+      case "symptom":
+        title = "Life-Link 환자 증상 입력";
+        metaDescription = "환자 증상, 상태 입력";
+        break;
+      case "/map":
+        title = "Life-Link 위치 입력";
+        metaDescription = "시연을 위해서 환자 수송 위치를 지도에서 선택";
         break;
       case "/prektas":
-        title = "";
-        metaDescription = "";
+        title = "Life-Link PreKTAS 정보 입력";
+        metaDescription = "구조대원이 환자의 상태를 PreKTAS 기준으로 평가";
         break;
-      case "/2":
-        title = "";
-        metaDescription = "";
+      case "/department":
+        title = "Life-Link 환자 진료과 입력";
+        metaDescription = "필요한 진료과 목록을 입력";
         break;
-      case "/3":
-        title = "";
-        metaDescription = "";
+      case "/recom-hospital":
+        title = "Life-Link 병원 추천 목록";
+        metaDescription = "알고리즘 기반 병원 추천 목록";
         break;
-      case "/4":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/5":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/6":
-        title = "";
-        metaDescription = "";
+      case "/transiting":
+        title = "Life-Link 환자 이송 중";
+        metaDescription = "환자 이송 페이지";
+        break;  
+      default:
+        title = "Life-Link";
+        metaDescription = "응급의료 통합 시스템, Life-Link의 구급구조대원 용 앱";
         break;
     }
 
@@ -105,15 +109,15 @@ function App() {
           showSplash ? <Frame7 /> : <Navigate to="/main" replace={true} />
         }
       />
-      <Route path="/hospital-detail" element={<Frame />} />
-      <Route path="/8" element={<Frame1 />} />
-      <Route path="/department" element={<Frame2 />} />
-      <Route path="/prektas" element={<PreKtas />} />
-      <Route path="/symptom" element={<Frame3 />} />
-      <Route path="/pati-info" element={<Frame4 />} />
       <Route path="/main" exact element={<Frame6 />} />
-      <Route path="/transiting" element={<Transiting />} />
+      <Route path="/hospital-detail" element={<Frame />} />
+      <Route path="/pati-info" element={<Frame4 />} />
+      <Route path="/symptom" element={<Frame3 />} />
       <Route path="/map" element={<Map />} />
+      <Route path="/prektas" element={<PreKtas />} />
+      <Route path="/department" element={<Frame2 />} />
+      <Route path="/recom-hospital" element={<Frame1 />} />
+      <Route path="/transiting" element={<Transiting />} />
     </Routes>
   );
 }
