@@ -94,3 +94,14 @@
   color: var(--color-red);
   font-family: var(--font-baloo-bhaijaan);
 }
+.department_input {
+  width: 296px;
+  height: 38px;
+  background-color: var(--color-gainsboro-200);
+  border: none;
+  padding-left: 10px;
+}
+.department_input::placeholder {
+  color: #6a6a6a;
+  font-size: var(--font-size-sm);
+}
