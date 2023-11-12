@@ -34,8 +34,8 @@ const Frame3 = () => {
                 <div className={styles.groupChild5} />
                 <div className={styles.groupChild6} />
                 <div className={styles.groupChild7} />
-                <button className={styles.open}>open</button>
-                <button className={styles.patent}>patent</button>
+                <div className={styles.open}>open</div>
+                <div className={styles.patent}>patent</div>
                 <div className={styles.effective}>effective</div>
               </div>
             </div>
@@ -55,8 +55,8 @@ const Frame3 = () => {
                     <p className={styles.p}>자발호흡</p>
                     <p className={styles.p}>여부</p>
                   </div>
-                  <div className={styles.o}>O</div>
-                  <div className={styles.x}>X</div>
+                  <div className={`${styles.o} ${styles.breath_o}`}>O</div>
+                  <div className={`${styles.x} ${styles.breath_x}`}>X</div>
                 </div>
                 <div className={styles.parent}>
                   <div className={styles.div1}>
@@ -89,18 +89,30 @@ const Frame3 = () => {
                   <div className={styles.groupChild16} />
                   <div className={styles.groupChild17} />
                   <div className={styles.groupChild18} />
-                  <div className={styles.div5}>고혈압</div>
-                  <div className={styles.div6}>정상</div>
-                  <div className={styles.div7}>저혈압</div>
+                  <div className={`${styles.div5} ${styles.bloodpress_high}`}>
+                    고혈압
+                  </div>
+                  <div className={`${styles.div6} ${styles.bloodpress_normal}`}>
+                    정상
+                  </div>
+                  <div className={`${styles.div7} ${styles.bloodpress_low}`}>
+                    저혈압
+                  </div>
                 </div>
                 <div className={styles.parent1}>
                   <div className={styles.div3}>맥박</div>
                   <div className={styles.groupChild16} />
                   <div className={styles.groupChild17} />
                   <div className={styles.groupChild18} />
-                  <div className={styles.div9}>빈맥</div>
-                  <div className={styles.div6}>정상</div>
-                  <div className={styles.div11}>서맥</div>
+                  <div className={`${styles.div9} ${styles.pulse_low}`}>
+                    빈맥
+                  </div>
+                  <div className={`${styles.div6} ${styles.pulse_normal}`}>
+                    정상
+                  </div>
+                  <div className={`${styles.div11} ${styles.pulse_high}`}>
+                    서맥
+                  </div>
                 </div>
                 <div className={styles.lineDiv} />
                 <div className={styles.groupChild23} />
