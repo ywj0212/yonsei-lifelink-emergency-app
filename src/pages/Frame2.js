@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Frame2.module.css";
 import { Link } from "react-router-dom";
 
