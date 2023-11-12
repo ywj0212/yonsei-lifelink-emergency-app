@@ -1,0 +1,150 @@
+.lifelink {
+  position: absolute;
+  width: 28.32%;
+  top: 0;
+  left: 10.91%;
+  font-size: var(--font-size-5xl);
+  font-family: var(--font-baloo-bhaijaan);
+  color: var(--color-red);
+  display: inline-block;
+}
+.groupChild {
+  position: absolute;
+  height: 12.43%;
+  width: 9.73%;
+  top: 0.37%;
+  right: 90.27%;
+  bottom: 87.21%;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.groupItem {
+  position: absolute;
+  top: 58px;
+  left: calc(50% - 165.5px);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 335px;
+  height: 147px;
+}
+.preKtas1 {
+  position: absolute;
+  top: 83px;
+  left: 27px;
+  font-weight: 600;
+}
+.groupInner,
+.rectangleDiv {
+  position: absolute;
+  top: 132px;
+  left: 18px;
+  border-radius: var(--br-lgi);
+  background-color: var(--color-gainsboro-200);
+  width: 57px;
+  height: 44px;
+}
+.rectangleDiv {
+  left: 81px;
+}
+.groupChild1 {
+  position: absolute;
+  left: 144px;
+}
+.groupChild1,
+.groupChild2,
+.groupChild3 {
+  top: 132px;
+  border-radius: var(--br-lgi);
+  background-color: var(--color-gainsboro-200);
+  width: 57px;
+  height: 44px;
+}
+.groupChild2 {
+  position: absolute;
+  left: 270px;
+}
+.groupChild3 {
+  left: 207px;
+}
+.b,
+.b1,
+.groupChild3 {
+  position: absolute;
+}
+.b {
+  top: 146px;
+  left: 42px;
+  display: inline-block;
+  width: 8px;
+  height: 22px;
+}
+.b1 {
+  left: 104px;
+  width: 10px;
+}
+.b1,
+.b2,
+.b3 {
+  top: 146px;
+  display: inline-block;
+  height: 22px;
+}
+.b2 {
+  position: absolute;
+  left: 167px;
+  width: 11px;
+}
+.b3 {
+  left: 230px;
+  width: 7px;
+}
+.b3,
+.b4,
+.groupIcon {
+  position: absolute;
+}
+.b4 {
+  top: 146px;
+  left: 293px;
+  display: inline-block;
+  width: 11px;
+  height: 22px;
+}
+.groupIcon {
+  top: 230px;
+  left: 254px;
+  width: 85px;
+  height: 42px;
+}
+.lifelinkParent {
+  position: relative;
+  width: 339px;
+  height: 272px;
+}
+.preKtas,
+.preKtasInner {
+  display: flex;
+  align-items: center;
+}
+.preKtasInner {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.preKtas {
+  position: relative;
+  background-color: var(--color-whitesmoke-100);
+  width: 100%;
+  height: 898px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-11xl) var(--padding-4xl);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}

@@ -1,3 +1,3 @@
-# Yonsei LifeLink Hospital Web
+# Yonsei LifeLink Hospital App
 
 Changpell project

@@ -1,41 +1,121 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  Routes,
+  Route,
+  useNavigationType,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
+import Frame from "./pages/Frame";
+import Frame1 from "./pages/Frame1";
+import Frame2 from "./pages/Frame2";
+import PreKtas from "./pages/PreKtas";
+import Frame3 from "./pages/Frame3";
+import Frame4 from "./pages/Frame4";
+import Frame5 from "./pages/Frame5";
+import Frame6 from "./pages/Frame6";
+import Frame7 from "./pages/Frame7";
+import Transiting from "./pages/Transiting";
+import Map from "./pages/Map";
 
 function App() {
-  const [localXY, setLocalXY] = useState({x: 100, y: 100});
-  const [xy, setXY] = useState({x: 100, y: 100});
-  const [size, setSize] = useState({x: 0, y: 0});
+  const action = useNavigationType();
+  const location = useLocation();
+  const pathname = location.pathname;
 
-  const lt = {x: 37.49397985177132, y: 126.57011010000026}
-  const rb = {x: 37.32058255099964, y: 126.78518280000175}
+  const [showSplash, setShowSplash] = useState(true);
 
-  const lerp = (x, y, t) => {
-    return (y * t + x * (1-t));
-  }
+  useEffect(() => {
+    if (action !== "POP") {
+      window.scrollTo(0, 0);
+    }
+  }, [action, pathname]);
 
-  return (<>
-    <header style={{  position: "sticky", top: 0, fontSize: 15, color: "white", backgroundColor: "#202", margin: 0, zIndex: 2 }}>
-      <pre>
-        <p>x: {localXY.x.toFixed(2)} | {xy.x.toFixed(2)} | ({((localXY.x / size.x)*100).toFixed(2)}%)</p>
-        <p>y: {localXY.y.toFixed(2)} | {xy.y.toFixed(2)} | ({((localXY.y / size.y)*100).toFixed(2)}%)</p>
-      </pre>
-    </header>
-    <img
-      src="map.png"
-      alt="map"
-      onClick={(e) => {
-        setSize({x: e.target.width, y: e.target.height});
-        setXY({x:e.pageX, y:e.pageY});
-        setLocalXY({x: e.pageX - e.target.offsetLeft, y: e.pageY - e.target.offsetTop});
-        }
+  useEffect(() => {
+    let title = "";
+    let metaDescription = "";
+
+    switch (pathname) {
+      case "/":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/1":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/prektas":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/2":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/3":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/4":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/5":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/6":
+        title = "";
+        metaDescription = "";
+        break;
+    }
+
+    if (title) {
+      document.title = title;
+    }
+
+    if (metaDescription) {
+      const metaDescriptionTag = document.querySelector(
+        'head > meta[name="description"]'
+      );
+      if (metaDescriptionTag) {
+        metaDescriptionTag.content = metaDescription;
       }
-      style={{ width: "100%", height: "auto" }}
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    // Hide splash screen after a delay (e.g., 2000 milliseconds)
+    const timeoutId = setTimeout(() => {
+      setShowSplash(false);
+    }, 2000);
+
+    // Clear the timeout when the component unmounts or when navigating away
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          showSplash ? <Frame7 /> : <Navigate to="/main" replace={true} />
+        }
       />
-
-    <div style={{ width: '15px', height: '15px', display: "inline", borderRadius: '7.5px', backgroundColor: "red", position: "absolute", left: xy.x - 7.5, top: xy.y - 7.5}}></div>
-
-    <p>lat: {lerp(lt.x, rb.x, (localXY.x / size.x))}</p>
-    <p>lon: {lerp(lt.y, rb.y, (localXY.y / size.y))}</p>
-  </>)
+      <Route path="/hospital-detail" element={<Frame />} />
+      <Route path="/8" element={<Frame1 />} />
+      <Route path="/department" element={<Frame2 />} />
+      <Route path="/prektas" element={<PreKtas />} />
+      <Route path="/symptom" element={<Frame3 />} />
+      <Route path="/pati-info" element={<Frame4 />} />
+      <Route path="/main" exact element={<Frame6 />} />
+      <Route path="/transiting" element={<Transiting />} />
+      <Route path="/map" element={<Map />} />
+    </Routes>
+  );
 }
-
 export default App;

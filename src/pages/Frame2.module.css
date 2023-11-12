@@ -1,0 +1,96 @@
+.lifelink {
+  position: absolute;
+  width: 28.32%;
+  top: 0;
+  left: 10.91%;
+  display: inline-block;
+}
+.groupChild {
+  position: absolute;
+  height: 14.02%;
+  width: 9.73%;
+  top: 0.41%;
+  right: 90.27%;
+  bottom: 85.56%;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.groupItem {
+  position: absolute;
+  top: 199px;
+  left: 254px;
+  width: 85px;
+  height: 42px;
+}
+.groupInner {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 167.5px);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 335px;
+  height: 99px;
+}
+.div1 {
+  position: absolute;
+  top: 17px;
+  left: 19px;
+  font-weight: 600;
+}
+.rectangleDiv {
+  position: absolute;
+  top: 42px;
+  left: 17px;
+  border-radius: var(--br-8xs);
+  background-color: var(--color-gainsboro-200);
+  width: 306px;
+  height: 38px;
+}
+.div2 {
+  position: absolute;
+  top: 52px;
+  left: 28px;
+  color: #6a6a6a;
+}
+.rectangleParent {
+  position: absolute;
+  top: 72px;
+  left: calc(50% - 165.5px);
+  width: 335px;
+  height: 99px;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+.lifelinkParent {
+  position: relative;
+  width: 339px;
+  height: 241px;
+}
+.div,
+.inner {
+  display: flex;
+  align-items: center;
+}
+.inner {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.div {
+  position: relative;
+  background-color: var(--color-whitesmoke-100);
+  width: 100%;
+  height: 898px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-11xl) var(--padding-4xl);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-red);
+  font-family: var(--font-baloo-bhaijaan);
+}
