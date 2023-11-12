@@ -14,16 +14,20 @@ const Frame4 = () => {
           <img className={styles.vectorIcon4} alt="" src="/vector6.svg" />
           <div className={styles.groupChild} />
           <div className={styles.div1}>이름</div>
-          <div className={styles.groupItem} />
+          <div className={styles.groupItem}>
+            <input className={styles.patient_name_input}></input>
+          </div>
           <div className={styles.groupInner} />
           <div className={styles.div2}>생년월일</div>
-          <div className={styles.rectangleDiv} />
+          <div className={styles.rectangleDiv}>
+            <input className={styles.birth_input}></input>
+          </div>
           <div className={styles.groupChild1} />
           <div className={styles.div3}>성별</div>
           <div className={styles.groupChild2} />
           <div className={styles.groupChild3} />
-          <div className={styles.div4}>남</div>
-          <div className={styles.div5}>여</div>
+          <button className={styles.div4}>남</button>
+          <button className={styles.div5}>여</button>
           <Link to="/symptom">
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />
           </Link>

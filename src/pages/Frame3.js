@@ -34,8 +34,8 @@ const Frame3 = () => {
                 <div className={styles.groupChild5} />
                 <div className={styles.groupChild6} />
                 <div className={styles.groupChild7} />
-                <div className={styles.open}>open</div>
-                <div className={styles.patent}>patent</div>
+                <button className={styles.open}>open</button>
+                <button className={styles.patent}>patent</button>
                 <div className={styles.effective}>effective</div>
               </div>
             </div>

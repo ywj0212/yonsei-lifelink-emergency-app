@@ -543,3 +543,13 @@
   color: var(--color-black);
   font-family: var(--font-inter);
 }
+.open {
+  border: none;
+  background-color: var(--color-gainsboro-100);
+  position: relative;
+  left: 25px;
+}
+
+.patent {
+  border: none;
+}

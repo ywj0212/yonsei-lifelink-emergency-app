@@ -12,7 +12,6 @@ import Frame2 from "./pages/Frame2";
 import PreKtas from "./pages/PreKtas";
 import Frame3 from "./pages/Frame3";
 import Frame4 from "./pages/Frame4";
-import Frame5 from "./pages/Frame5";
 import Frame6 from "./pages/Frame6";
 import Frame7 from "./pages/Frame7";
 import Transiting from "./pages/Transiting";

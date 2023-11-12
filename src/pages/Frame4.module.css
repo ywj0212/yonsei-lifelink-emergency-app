@@ -186,3 +186,21 @@
   color: var(--color-black);
   font-family: var(--font-inter);
 }
+.patient_name_input,
+.birth_input {
+  padding-left: 10px;
+  width: 295px;
+  height: inherit;
+  border: none;
+  border-radius: var(--br-8xs);
+  background-color: var(--color-gainsboro-200);
+  font-size: var(--font-size-xl);
+}
+.div4,
+.div5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-gainsboro-200);
+}
