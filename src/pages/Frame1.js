@@ -1,8 +1,6 @@
 import styles from './Frame1.module.css';
 import { Link } from 'react-router-dom';
 import HospitalCard from '../components/HospitalCard';
-import Frame4 from './Frame4';
-
 const Frame6 = () => {
   return (
     <div className={styles.div}>

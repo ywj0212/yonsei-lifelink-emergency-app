@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import styles from "./Map.module.css";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Map.module.css';
 
 function Map() {
   const [localXY, setLocalXY] = useState({ x: null, y: null });
   const [xy, setXY] = useState({ x: 170, y: 416 });
   const [size, setSize] = useState({ x: 339, y: 339 });
-  const [gps, setGps] = useState({ latitude: 37.382520, longitude: 126.672303 });
+  const [gps, setGps] = useState({ latitude: 37.38252, longitude: 126.672303 });
 
   const lt = { x: 37.49397985177132, y: 126.57011010000026 };
   const rb = { x: 37.32058255099964, y: 126.78518280000175 };
@@ -19,15 +19,15 @@ function Map() {
     <>
       <div
         style={{
-          width: "15px",
-          height: "15px",
-          display: "inline",
-          borderRadius: "7.5px",
-          backgroundColor: "red",
-          position: "absolute",
+          width: '15px',
+          height: '15px',
+          display: 'inline',
+          borderRadius: '7.5px',
+          backgroundColor: 'red',
+          position: 'absolute',
           left: xy.x - 7.5,
           top: xy.y - 7.5,
-          zIndex: 2
+          zIndex: 2,
         }}
       ></div>
       <div className={styles.div}>
@@ -35,16 +35,24 @@ function Map() {
           <div className={styles.lifelinkParent}>
             <div className={styles.lifelink}>LiFELiNK</div>
             <img className={styles.groupChild} alt="" src="/group-4.svg" />
-            
-            <p style={{
-              color: "#ff4040",
-              fontSize: 16,
-              textAlign: "center",
-              width: "100%",
-              position: "absolute",
-              top: 50
-            }}>
-              위치에 따른 이송 병원 추천 시연을 위해서<br/>환자 이송 위치를 지도에서 선택해주세요.<br/><small style={{color: "#6080ff"}}>(GPS 이용 시 전시장 위치로만 시연 가능)</small>
+
+            <p
+              style={{
+                color: '#ff4040',
+                fontSize: 16,
+                textAlign: 'center',
+                width: '100%',
+                position: 'absolute',
+                top: 50,
+              }}
+            >
+              위치에 따른 이송 병원 추천 시연을 위해서
+              <br />
+              환자 이송 위치를 지도에서 선택해주세요.
+              <br />
+              <small style={{ color: '#6080ff' }}>
+                (GPS 이용 시 전시장 위치로만 시연 가능)
+              </small>
             </p>
 
             <img
@@ -59,20 +67,25 @@ function Map() {
                 });
                 setGps({
                   latitude: lerp(lt.x, rb.x, localXY.x / size.x),
-                  longitude: lerp(lt.y, rb.y, localXY.y / size.y)
-                })
+                  longitude: lerp(lt.y, rb.y, localXY.y / size.y),
+                });
               }}
               style={{
-                position: "absolute",
+                position: 'absolute',
                 margin: 0,
                 top: 170,
-                width: "100%",
-                height: "auto"
+                width: '100%',
+                height: 'auto',
               }}
             />
 
             <Link to="/recom-hospital">
-              <img className={styles.groupItem} style={{ position: "absolute", top: 540 }} alt="" src="/group-80.svg" />
+              <img
+                className={styles.groupItem}
+                style={{ position: 'absolute', top: 540 }}
+                alt=""
+                src="/group-80.svg"
+              />
             </Link>
           </div>
         </div>
