@@ -6,9 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
-  left: 0;
-  top: 0;
+  margin-top: 20px;
 }
 .card_top,
 .card_body {
@@ -56,11 +54,11 @@
   align-items: center;
 }
 .card_congest_title {
-  margin-right: 16px;
+  margin-right: 13px;
 }
 .card_congest_blocks div {
   font-weight: 600;
-  margin-right: 3px;
+  margin-right: 2px;
   padding: 1px 3px;
 }
 
@@ -108,4 +106,31 @@
 }
 .card_trasfPati_title {
   margin-right: 14px;
+}
+.card_icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.card_icons_phone,
+.card_icons_map {
+  border-radius: 50%;
+  color: white;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 7px;
+  position: relative;
+  left: 242px;
+  bottom: 35px;
+}
+.card_icons_phone {
+  background-color: var(--color-limegreen-100);
+  font-size: 18px;
+}
+.card_icons_map {
+  background-color: var(--color-khaki);
+  font-size: 18px;
 }

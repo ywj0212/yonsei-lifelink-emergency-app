@@ -1,13 +1,15 @@
 import styles from "./HospitalCard.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 export default function HospitalCard({
   hospName,
   hospType,
   congest,
-  emBed_current,
-  emBed_total,
-  icuBed_current,
-  icuBed_total,
+  emBed_current = "-",
+  emBed_total = "-",
+  icuBed_current = "-",
+  icuBed_total = "-",
   trasf_pati,
 }) {
   return (
@@ -78,7 +80,14 @@ export default function HospitalCard({
           <div className={styles.card_trasfPati_myung}>명</div>
         </div>
       </div>
-      <div className={styles.card_icon}></div>
+      <div className={styles.card_icons}>
+        <div className={styles.card_icons_phone}>
+          <FontAwesomeIcon icon={faPhone} />
+        </div>
+        <div className={styles.card_icons_map}>
+          <FontAwesomeIcon icon={faLocationDot} />
+        </div>
+      </div>
     </div>
   );
 }
