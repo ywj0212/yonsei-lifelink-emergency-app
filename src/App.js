@@ -21,7 +21,6 @@ function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
-
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
@@ -70,10 +69,11 @@ function App() {
       case "/transiting":
         title = "Life-Link 환자 이송 중";
         metaDescription = "환자 이송 페이지";
-        break;  
+        break;
       default:
         title = "Life-Link";
-        metaDescription = "응급의료 통합 시스템, Life-Link의 구급구조대원 용 앱";
+        metaDescription =
+          "응급의료 통합 시스템, Life-Link의 구급구조대원 용 앱";
         break;
     }
 
@@ -93,9 +93,21 @@ function App() {
 
   useEffect(() => {
     // Hide splash screen after a delay (e.g., 2000 milliseconds)
+    fetch("https://lifelink-api.mirix.kr/app/gethospitals", {
+      method: "POST",
+      body: {
+        latitude: 37.38252,
+        longitude: 126.672303,
+        preKTAS: 2,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+      });
     const timeoutId = setTimeout(() => {
       setShowSplash(false);
-    }, 2000);
+    }, 1000);
 
     // Clear the timeout when the component unmounts or when navigating away
     return () => clearTimeout(timeoutId);
@@ -121,4 +133,5 @@ function App() {
     </Routes>
   );
 }
+
 export default App;
