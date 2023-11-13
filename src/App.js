@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Routes,
   Route,
@@ -93,14 +94,12 @@ function App() {
 
   useEffect(() => {
     // Hide splash screen after a delay (e.g., 2000 milliseconds)
-    fetch("https://lifelink-api.mirix.kr/app/gethospitals/", {
-      method: "POST",
-      body: {
-        "latitude": 37.38252,
-        "longitude": 126.672303,
-        "preKTAS": 2,
-      },
-    })
+    axios
+      .post("https://lifelink-api.mirix.kr/app/gethospitals/", {
+        latitude: 37.38252,
+        longitude: 126.672303,
+        preKTAS: 2,
+      })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
