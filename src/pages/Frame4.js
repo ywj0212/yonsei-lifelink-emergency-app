@@ -1,9 +1,19 @@
-import { useState } from "react";
-import styles from "./Frame4.module.css";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import styles from './Frame4.module.css';
+import { Link } from 'react-router-dom';
 
 const Frame4 = () => {
   const [sex, setSex] = useState(null);
+  const [birth, setBirth] = useState('');
+  const [name, setName] = useState('');
+  const [patiInfoList, setPatiInfoList] = useState(null);
+  const onClicked = () => {
+    setPatiInfoList({ name: `${name}`, birth: `${birth}`, sex: `${sex}` });
+  };
+  const onNameChanged = (event) => {
+    setName(event.target.value);
+  };
+  const onBirthChanged = (event) => [setBirth(event.target.value)];
 
   return (
     <div className={styles.div}>
@@ -18,22 +28,64 @@ const Frame4 = () => {
           <div className={styles.groupChild} />
           <div className={styles.div1}>이름</div>
           <div className={styles.groupItem}>
-            <input className={styles.patient_name_input}></input>
+            <input
+              className={styles.patient_name_input}
+              value={name}
+              onChange={onNameChanged}
+            ></input>
           </div>
           <div className={styles.groupInner} />
           <div className={styles.div2}>생년월일</div>
           <div className={styles.rectangleDiv}>
-            <input className={styles.birth_input}></input>
+            <input
+              className={styles.birth_input}
+              placeholder={'Ex.040718'}
+              onChange={onBirthChanged}
+              value={birth}
+            ></input>
           </div>
           <div className={styles.groupChild1} />
           <div className={styles.div3}>성별</div>
-          <div className={styles.groupChild2} style={(sex === "M" ? {backgroundColor: "#ff7979"} : {backgroundColor: "#e2e2e2"})} onClick={() => setSex("M")} />
-          <div className={styles.div4} style={{backgroundColor: "transparent"}} onClick={() => setSex("M")}>남</div>
+          <div
+            className={styles.groupChild2}
+            style={
+              sex === 'M'
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
+            }
+            onClick={() => setSex('M')}
+          />
+          <div
+            className={styles.div4}
+            style={{ backgroundColor: 'transparent' }}
+            onClick={() => setSex('M')}
+          >
+            남
+          </div>
 
-          <div className={styles.groupChild3} style={(sex === "F" ? {backgroundColor: "#ff7979"} : {backgroundColor: "#e2e2e2"})} onClick={() => setSex("F")} />
-          <div className={styles.div5} style={{backgroundColor: "transparent"}} onClick={() => setSex("F")}>여</div>
-
-          <Link to="/symptom" onClick={(e) => {if (sex == null) e.preventDefault()}}>
+          <div
+            className={styles.groupChild3}
+            style={
+              sex === 'F'
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
+            }
+            onClick={() => setSex('F')}
+          />
+          <div
+            className={styles.div5}
+            style={{ backgroundColor: 'transparent' }}
+            onClick={() => setSex('F')}
+          >
+            여
+          </div>
+          <Link
+            to="/symptom"
+            onClick={(e) => {
+              if (sex == null) e.preventDefault();
+              onClicked();
+            }}
+          >
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />
           </Link>
         </div>
@@ -42,4 +94,4 @@ const Frame4 = () => {
   );
 };
 
-export default Frame4;
+export default { Frame4, patiInfoList };
