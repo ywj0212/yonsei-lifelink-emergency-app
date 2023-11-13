@@ -1,10 +1,17 @@
-import styles from "./PreKtas.module.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import styles from './PreKtas.module.css';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const PreKtas = () => {
   const [preKtas, setPreKtas] = useState(null);
+  const [preKTASList, setPreKTASList] = useState(null);
 
+  const onClicked = () => {
+    const newPreKTASList = {
+      preKTAS: `${preKtas}`,
+    };
+    setPreKTASList(newPreKTASList);
+  };
   return (
     <div className={styles.preKtas}>
       <div className={styles.preKtasInner}>
@@ -17,8 +24,8 @@ const PreKtas = () => {
             className={styles.groupInner}
             style={
               preKtas === 1
-                ? { backgroundColor: "#ff7979" }
-                : { backgroundColor: "#e2e2e2" }
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
             }
             onClick={() => setPreKtas(1)}
           />
@@ -26,8 +33,8 @@ const PreKtas = () => {
             className={styles.rectangleDiv}
             style={
               preKtas === 2
-                ? { backgroundColor: "#ff7979" }
-                : { backgroundColor: "#e2e2e2" }
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
             }
             onClick={() => setPreKtas(2)}
           />
@@ -35,8 +42,8 @@ const PreKtas = () => {
             className={styles.groupChild1}
             style={
               preKtas === 3
-                ? { backgroundColor: "#ff7979" }
-                : { backgroundColor: "#e2e2e2" }
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
             }
             onClick={() => setPreKtas(3)}
           />
@@ -44,8 +51,8 @@ const PreKtas = () => {
             className={styles.groupChild2}
             style={
               preKtas === 5
-                ? { backgroundColor: "#ff7979" }
-                : { backgroundColor: "#e2e2e2" }
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
             }
             onClick={() => setPreKtas(5)}
           />
@@ -53,8 +60,8 @@ const PreKtas = () => {
             className={styles.groupChild3}
             style={
               preKtas === 4
-                ? { backgroundColor: "#ff7979" }
-                : { backgroundColor: "#e2e2e2" }
+                ? { backgroundColor: '#ff7979' }
+                : { backgroundColor: '#e2e2e2' }
             }
             onClick={() => setPreKtas(4)}
           />
@@ -67,6 +74,7 @@ const PreKtas = () => {
             to="/department"
             onClick={(e) => {
               if (preKtas == null) e.preventDefault();
+              onClicked();
             }}
           >
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />
