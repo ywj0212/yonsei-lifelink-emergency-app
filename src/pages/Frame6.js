@@ -1,5 +1,6 @@
 import styles from "./Frame6.module.css";
 import { Link } from "react-router-dom";
+import HospitalCard from "../components/HospitalCard";
 
 const Frame6 = () => {
   return (
@@ -103,6 +104,16 @@ const Frame6 = () => {
               </div>
             </div>
           </Link>
+          <HospitalCard
+            hospName={"수혁병원"}
+            hospType={"권역응급의료센터"}
+            congest={3}
+            emBed_current={99}
+            emBed_total={105}
+            icuBed_current={37}
+            icuBed_total={45}
+            trasf_pati={3}
+          ></HospitalCard>
           <div className={styles.b6}>
             <div className={styles.aChild} />
             <div className={styles.a1}>B 병원</div>

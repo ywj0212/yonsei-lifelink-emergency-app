@@ -1,0 +1,111 @@
+.hospitalCard {
+  border-radius: var(--br-xl);
+  background-color: var(--color-whitesmoke-200);
+  width: 335px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.card_top,
+.card_body {
+  margin-left: 33px;
+}
+
+.card_top,
+.card_congest,
+.card_congest_blocks,
+.card_emBed,
+.card_emBed_number,
+.card_icuBed,
+.card_icuBed_number,
+.card_trasfPati {
+  display: flex;
+  flex-direction: row;
+}
+.card_top {
+  margin-top: 20px;
+  margin-bottom: 11px;
+  align-items: center;
+}
+.hospitalName {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-black);
+  margin-right: 12px;
+}
+.hospitalType {
+  font-size: var(--font-size-2xs);
+  font-weight: 500;
+}
+.card_congest_title,
+.card_emBed_title,
+.card_icuBed_title,
+.card_trasfPati {
+  font-size: var(--font-size-3xs);
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--color-dimgray-200);
+}
+.card_congest,
+.card_emBed,
+.card_icuBed {
+  align-items: center;
+}
+.card_congest_title {
+  margin-right: 16px;
+}
+.card_congest_blocks div {
+  font-weight: 600;
+  margin-right: 3px;
+  padding: 1px 3px;
+}
+
+.card_congest_blocks_normal {
+  background-color: var(--color-silver-200);
+  color: var(--color-dimgray);
+}
+.card_congest_blocks_red {
+  background-color: var(--color-lightpink);
+  color: var(--color-red);
+}
+.card_congest_blocks_org {
+  background-color: #ffcd9f;
+  color: #ff7a00;
+}
+.card_congest_blocks_yel {
+  background-color: #fff2af;
+  color: #fed600;
+}
+.card_congest_blocks_gre {
+  background-color: #d0ffba;
+  color: #2eb200;
+}
+.card_emBed_title {
+  margin-right: 25px;
+}
+.card_emBed_current,
+.card_icuBed_current,
+.card_trasfPati_number {
+  color: var(--color-red);
+}
+.card_emBed_total,
+.card_icuBed_total {
+  color: var(--color-dimgray-200);
+}
+.card_icuBed_title {
+  margin-right: 16px;
+}
+.card_emBed_number,
+.card_icuBed_number,
+.card_trasfPati_number,
+.card_trasfPati_myung {
+  font-size: var(--font-size-3xs);
+  font-weight: 600;
+}
+.card_trasfPati_title {
+  margin-right: 14px;
+}
