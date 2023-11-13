@@ -94,4 +94,4 @@ const Frame4 = () => {
   );
 };
 
-export default { Frame4, patiInfoList };
+export default Frame4;
