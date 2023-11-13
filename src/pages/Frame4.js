@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Frame4.module.css';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,12 @@ const Frame4 = () => {
   const [name, setName] = useState('');
   const [patiInfoList, setPatiInfoList] = useState(null);
   const onClicked = () => {
-    setPatiInfoList({ name: `${name}`, birth: `${birth}`, sex: `${sex}` });
+    const newPatiInfoList = {
+      name: `${name}`,
+      birth: `${birth}`,
+      sex: `${sex}`,
+    };
+    setPatiInfoList(newPatiInfoList);
   };
   const onNameChanged = (event) => {
     setName(event.target.value);
