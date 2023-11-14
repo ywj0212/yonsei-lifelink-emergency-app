@@ -22,6 +22,23 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
   const [showSplash, setShowSplash] = useState(true);
+  const [totalList, setTotalList] = useState({});
+  const [isTotal, setIsTotal] = useState(false);
+
+  const updateTotalList = (newData) => {
+    setTotalList((prevData) => ({ ...prevData, ...newData }));
+  };
+  const onFinalCheck = () => {
+    setIsTotal((prev) => !prev);
+  };
+  useEffect(() => {
+    fetch('https://lifelink-api.mirix.kr/app/setdestination', {
+      method: 'POST',
+      body: JSON.stringify(totalList),
+    }).then((res) => {
+      console.log(res.json());
+    });
+  }, [isTotal]);
 
   useEffect(() => {
     if (action !== 'POP') {
@@ -92,15 +109,22 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
-    // Hide splash screen after a delay (e.g., 2000 milliseconds)
     fetch('https://lifelink-api.mirix.kr/app/test/', {
       method: 'POST',
-      body: { latitude: 37.38252, longitude: 126.672303, preKTAS: 2 },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      });
+      // headers: {
+      //   //데이터 타입 지정
+      //   'content-type': 'application/json',
+      // },
+      body: JSON.stringify({
+        latitude: 37.38252,
+        longitude: 126.672303,
+        preKTAS: 2,
+      }),
+    }).then((res) => {
+      console.log(res.json());
+    });
+    // Hide splash screen after a delay (e.g., 2000 milliseconds)
+
     const timeoutId = setTimeout(() => {
       setShowSplash(false);
     }, 1000);
@@ -119,11 +143,22 @@ function App() {
       />
       <Route path="/main" exact element={<Frame6 />} />
       <Route path="/hospital-detail" element={<Frame />} />
-      <Route path="/pati-info" element={<Frame4 />} />
-      <Route path="/symptom" element={<Frame3 />} />
-      <Route path="/map" element={<Map />} />
-      <Route path="/prektas" element={<PreKtas />} />
-      <Route path="/department" element={<Frame2 />} />
+      <Route
+        path="/pati-info"
+        element={<Frame4 onUpdate={updateTotalList} />}
+      />
+      <Route path="/symptom" element={<Frame3 onUpdate={updateTotalList} />} />
+      <Route
+        path="/map"
+        element={
+          <Map onUpdate={updateTotalList} onFinalUpdate={onFinalCheck} />
+        }
+      />
+      <Route path="/prektas" element={<PreKtas onUpdate={updateTotalList} />} />
+      <Route
+        path="/department"
+        element={<Frame2 onUpdate={updateTotalList} />}
+      />
       <Route path="/recom-hospital" element={<Frame1 />} />
       <Route path="/transiting" element={<Transiting />} />
     </Routes>

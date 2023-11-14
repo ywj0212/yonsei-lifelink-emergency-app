@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './Frame4.module.css';
 import { Link } from 'react-router-dom';
 
-const Frame4 = () => {
+const Frame4 = ({ onUpdate }) => {
   const [sex, setSex] = useState(null);
   const [birth, setBirth] = useState('');
   const [name, setName] = useState('');
@@ -10,10 +10,11 @@ const Frame4 = () => {
   const onClicked = () => {
     const newPatiInfoList = {
       name: `${name}`,
-      birth: `${birth}`,
+      birth: 123 - (parseInt(birth.substring(0, 2)) + 100) + 1,
       sex: `${sex}`,
     };
     setPatiInfoList(newPatiInfoList);
+    onUpdate(newPatiInfoList);
   };
   const onNameChanged = (event) => {
     setName(event.target.value);

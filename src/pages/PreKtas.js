@@ -2,7 +2,7 @@ import styles from './PreKtas.module.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const PreKtas = () => {
+const PreKtas = ({ onUpdate }) => {
   const [preKtas, setPreKtas] = useState(null);
   const [preKTASList, setPreKTASList] = useState(null);
 
@@ -11,6 +11,7 @@ const PreKtas = () => {
       preKTAS: `${preKtas}`,
     };
     setPreKTASList(newPreKTASList);
+    onUpdate(newPreKTASList);
   };
   return (
     <div className={styles.preKtas}>

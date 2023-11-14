@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Map.module.css';
 
-function Map() {
+function Map({ onUpdate, onFinalUpdate }) {
   const [localXY, setLocalXY] = useState({ x: null, y: null });
   const [xy, setXY] = useState({ x: 170, y: 416 });
   const [size, setSize] = useState({ x: 339, y: 339 });
@@ -15,6 +15,9 @@ function Map() {
     return y * t + x * (1 - t);
   };
 
+  const onClicked = () => {
+    onFinalUpdate();
+  };
   return (
     <>
       <div
@@ -69,6 +72,10 @@ function Map() {
                   latitude: lerp(lt.x, rb.x, localXY.x / size.x),
                   longitude: lerp(lt.y, rb.y, localXY.y / size.y),
                 });
+                onUpdate({
+                  latitude: lerp(lt.x, rb.x, localXY.x / size.x),
+                  longitude: lerp(lt.y, rb.y, localXY.y / size.y),
+                });
               }}
               style={{
                 position: 'absolute',
@@ -79,7 +86,7 @@ function Map() {
               }}
             />
 
-            <Link to="/recom-hospital">
+            <Link to="/recom-hospital" onClick={onClicked}>
               <img
                 className={styles.groupItem}
                 style={{ position: 'absolute', top: 540 }}

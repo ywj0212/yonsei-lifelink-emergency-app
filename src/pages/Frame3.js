@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Frame3.module.css';
 import { Link } from 'react-router-dom';
 
-const Frame3 = () => {
+const Frame3 = ({ onUpdate }) => {
   const [gido, setGido] = useState(null);
 
   const [isBreathing, setIsBreathing] = useState(null);
@@ -27,6 +27,7 @@ const Frame3 = () => {
       consciousness: `${consciousness}`,
     };
     setSympInfoList(newSympInfoList);
+    onUpdate(newSympInfoList);
   };
 
   return (
