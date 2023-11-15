@@ -1,99 +1,102 @@
-import styles from "./Frame.module.css";
+import styles from './Frame.module.css';
+import { useLocation } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import DoctorCard from '../components/DoctorCard';
 
 const Frame = () => {
+  const location = useLocation();
   return (
     <div className={styles.div}>
       <div className={styles.inner}>
-        <div className={styles.groupParent}>
-          <img className={styles.groupChild} alt="" src="/group-4.svg" />
-          <div className={styles.lifelink}>LiFELiNK</div>
-          <div className={styles.groupItem} />
-          <div className={styles.groupInner} />
-          <div className={styles.aParent}>
-            <div className={styles.a}>A 병원</div>
-            <div className={styles.div1}>권역응급의료센터</div>
-            <img className={styles.groupIcon} alt="" src="/group-5.svg" />
-            <img className={styles.groupChild1} alt="" src="/group-6.svg" />
-            <div className={styles.lineDiv} />
+        <div className={styles.phone_frame}>
+          <div className={styles.lifelink}>
+            <img className={styles.lifelink_icon} alt="" src="/group-4.svg" />
+            <div className={styles.lifelink_title}>LiFELiNK</div>
           </div>
-          <div className={styles.lineParent}>
-            <div className={styles.groupChild2} />
-            <div className={styles.groupContainer}>
-              <div className={styles.vectorParent}>
+          <div className={styles.hospital_detail}>
+            <div className={styles.hospital_detail_top}>
+              <div className={styles.top_title}>
+                <div className={styles.top_title_hospName}>
+                  {location.state.hospName}
+                </div>
+                <div className={styles.top_title_hospType}>
+                  {location.state.hospType}
+                </div>
+              </div>
+              <div className={styles.top_icons}>
                 <img
-                  className={styles.rectangleIcon}
+                  className={styles.top_icons_call}
                   alt=""
-                  src="/rectangle-2.svg"
+                  src="/group-5.svg"
                 />
-                <div className={styles.div2}>응급실 병상</div>
-                <div className={styles.div3}>6</div>
-              </div>
-              <div className={styles.rectangleParent}>
-                <div className={styles.rectangleDiv} />
-                <div className={styles.div4}>수술실</div>
-                <div className={styles.div5}>5</div>
-              </div>
-              <div className={styles.rectangleGroup}>
-                <div className={styles.rectangleDiv} />
-                <div className={styles.div2}>입원실 병상</div>
-                <div className={styles.div7}>54</div>
-              </div>
-              <div className={styles.rectangleContainer}>
-                <div className={styles.rectangleDiv} />
-                <div className={styles.div2}>중환자실 병상</div>
-                <div className={styles.div3}>8</div>
+                <img
+                  className={styles.top_icons_map}
+                  alt=""
+                  src="/group-6.svg"
+                />
               </div>
             </div>
-            <div className={styles.a1}>A 권역응급의료센터 현황</div>
-            <div className={styles.div10}>
-              *모든 수치는 잔여 수를 기준으로 합니다
+            <div className={styles.hospital_detail_linebox}>
+              <div className={styles.hospital_detail_line}> </div>
             </div>
-          </div>
-          <div className={styles.groupDiv}>
-            <div className={styles.rectangleParent1}>
-              <div className={styles.groupChild5} />
-              <div className={styles.div11}>검색</div>
-            </div>
-            <div className={styles.parent}>
-              <div className={styles.div12}>의료진 검색</div>
-              <div className={styles.groupChild6} />
-            </div>
-            <div className={styles.groupParent1}>
-              <div className={styles.rectangleParent2}>
-                <div className={styles.groupChild7} />
-                <div className={styles.div13}>윤서정</div>
-                <div className={styles.div14}>응급의학과</div>
-                <div className={styles.ellipseDiv} />
-                <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+            <div className={styles.hospital_detail_body}>
+              <div className={styles.body_title}>
+                {location.state.hospName} {location.state.hospType} 현황
               </div>
-              <div className={styles.rectangleParent3}>
-                <div className={styles.groupChild7} />
-                <div className={styles.div15}>응급의학과</div>
-                <div className={styles.div16}>남도일</div>
-                <div className={styles.ellipseDiv} />
-                <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
+              <div className={styles.body_cards}>
+                <div className={styles.body_card}>
+                  <div className={styles.body_card_title}>응급실 병상</div>
+                  <div className={styles.body_card_number}>
+                    {location.state.emBed_current}
+                  </div>
+                </div>
+                <div className={styles.body_card}>
+                  <div className={styles.body_card_title}>입원실 병상</div>
+                  <div className={styles.body_card_number}>
+                    {location.state.hospBed_current}
+                  </div>
+                </div>
+                <div className={styles.body_card}>
+                  <div className={styles.body_card_title}>중환자실 병상</div>
+                  <div className={styles.body_card_number}>
+                    {location.state.icuBed_current}
+                  </div>
+                </div>
+                <div className={styles.body_card}>
+                  <div className={styles.body_card_title}>수술실 빈방</div>
+                  <div className={styles.body_card_number}>
+                    {location.state.surgery_current}
+                  </div>
+                </div>
               </div>
-              <div className={styles.rectangleParent4}>
-                <div className={styles.groupChild10} />
-                <div className={styles.div17}>응급의학과</div>
-                <div className={styles.div18}>서우진</div>
-                <div className={styles.groupChild11} />
-                <img className={styles.vectorIcon2} alt="" src="/vector.svg" />
-              </div>
-              <div className={styles.rectangleParent5}>
-                <div className={styles.groupChild7} />
-                <div className={styles.div13}>차은재</div>
-                <div className={styles.div14}>응급의학과</div>
-                <div className={styles.ellipseDiv} />
-                <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+              <div className={styles.body_notification}>
+                *모든 수치는 잔여 수를 기준으로 합니다
               </div>
             </div>
-            <div className={styles.groupWrapper}>
-              <div className={styles.rectangleParent6}>
-                <div className={styles.groupChild14} />
-                <img className={styles.lineIcon} alt="" src="/line-6.svg" />
-                <img className={styles.icon} alt="" src="/1.svg" />
-                <div className={styles.nameSearch}>name search</div>
+            <div className={styles.hospital_detail_linebox}>
+              <div className={styles.hospital_detail_line}> </div>
+            </div>
+            <div className={styles.hospital_detail_bottom}>
+              <div className={styles.bottom_title}>의료진 검색</div>
+              <div className={styles.bottom_search}>
+                <div className={styles.bottom_search_inputbox}>
+                  <FontAwesomeIcon
+                    className={styles.bottom_search_icon}
+                    icon={faMagnifyingGlass}
+                    size="xl"
+                  />
+                  <input className={styles.bottom_search_input}></input>
+                </div>
+                <div className={styles.bottom_search_button}>검색</div>
+              </div>
+              <div className={styles.bottom_listview}>
+                <DoctorCard doctorName={'윤서정'} doctorDepart={'응급의학과'} />
+                <DoctorCard doctorName={'남도일'} doctorDepart={'응급의학과'} />
+                <DoctorCard doctorName={'서우진'} doctorDepart={'응급의학과'} />
+                <DoctorCard doctorName={'차은재'} doctorDepart={'응급의학과'} />
+                <DoctorCard doctorName={'차은재'} doctorDepart={'응급의학과'} />
+                <DoctorCard doctorName={'차은재'} doctorDepart={'응급의학과'} />
               </div>
             </div>
           </div>

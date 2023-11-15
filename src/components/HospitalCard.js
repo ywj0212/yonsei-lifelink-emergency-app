@@ -1,15 +1,15 @@
-import styles from "./HospitalCard.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import styles from './HospitalCard.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 export default function HospitalCard({
   hospName,
   hospType,
   congest,
-  emBed_current = "-",
-  emBed_total = "-",
-  icuBed_current = "-",
-  icuBed_total = "-",
+  emBed_current = '-',
+  emBed_total = '-',
+  icuBed_current = '-',
+  icuBed_total = '-',
   trasf_pati,
 }) {
   return (

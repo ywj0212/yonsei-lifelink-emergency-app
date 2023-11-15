@@ -25,19 +25,26 @@ function App() {
   const [totalList, setTotalList] = useState({});
   const [isTotal, setIsTotal] = useState(false);
 
+  // Add patient info- to TotalList
   const updateTotalList = (newData) => {
     setTotalList((prevData) => ({ ...prevData, ...newData }));
   };
+
+  // Check whether patient info- inputing is end
   const onFinalCheck = () => {
     setIsTotal((prev) => !prev);
   };
+
+  // If patient info- inputing is end, POST patient info- and return hospital list
   useEffect(() => {
     fetch('https://lifelink-api.mirix.kr/app/setdestination', {
       method: 'POST',
-      body: JSON.stringify(totalList),
-    }).then((res) => {
-      console.log(res.json());
-    });
+      body: totalList,
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((res) => console.log(res));
   }, [isTotal]);
 
   useEffect(() => {
@@ -111,18 +118,14 @@ function App() {
   useEffect(() => {
     fetch('https://lifelink-api.mirix.kr/app/test/', {
       method: 'POST',
-      // headers: {
-      //   //데이터 타입 지정
-      //   'content-type': 'application/json',
-      // },
       body: JSON.stringify({
         latitude: 37.38252,
         longitude: 126.672303,
         preKTAS: 2,
       }),
-    }).then((res) => {
-      console.log(res.json());
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
     // Hide splash screen after a delay (e.g., 2000 milliseconds)
 
     const timeoutId = setTimeout(() => {

@@ -17,6 +17,8 @@
   font-size: var(--font-size-5xl);
   color: var(--color-red);
   font-family: var(--font-baloo-bhaijaan);
+  background-color: white;
+  padding-bottom: 15px;
 }
 .aChild {
   top: 0;
@@ -439,7 +441,7 @@
   font-weight: 800;
 }
 .div25 {
-  top: 679px;
+  top: 560px;
   left: 236px;
   width: 108px;
   height: 108px;
@@ -449,7 +451,6 @@
 .groupParent {
   position: relative;
   width: 344px;
-  height: 850px;
 }
 .div,
 .inner {
@@ -473,4 +474,13 @@
   font-size: var(--font-size-5xs);
   color: var(--color-dimgray-100);
   font-family: var(--font-inter);
+}
+.hospital_listview {
+  width: inherit;
+  height: 700px;
+  overflow-y: auto;
+  border-bottom: 5px solid gray;
+}
+.hospital_listview::-webkit-scrollbar {
+  display: none;
 }

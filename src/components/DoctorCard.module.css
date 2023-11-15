@@ -1,0 +1,32 @@
+.doctorCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 300px;
+  height: 42px;
+  margin-top: 18px;
+}
+.doctorCard_head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.doctorCard_name {
+  font-size: var(--font-size-smi);
+  font-weight: 600;
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.doctorCard_department {
+  font-size: var(--font-size-2xs);
+  font-weight: 500;
+  color: var(--color-dimgray-100);
+}
+.doctorCard_icon {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}

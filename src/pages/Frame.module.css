@@ -1,5 +1,211 @@
-.groupChild,
+.div,
+.inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-4xl);
+}
+.div {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 898px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-11xl) var(--padding-4xl);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-5xs);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+.phone_frame {
+  position: relative;
+  width: 344px;
+}
 .lifelink {
+  height: 32px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: var(--font-size-5xl);
+  color: var(--color-red);
+  font-family: var(--font-baloo-bhaijaan);
+  background-color: white;
+  padding-bottom: 15px;
+}
+.lifelink_icon {
+  height: 32px;
+  width: 32px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.lifelink_title {
+  width: 100px;
+  display: inline-block;
+}
+.hospital_detail {
+  border-radius: var(--br-xl);
+  background-color: var(--color-whitesmoke-200);
+  width: 335px;
+  height: 705px;
+  display: flex;
+  flex-direction: column;
+}
+.hospital_detail_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 25px;
+  padding-top: 45px;
+}
+.top_title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.top_title_hospName {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+}
+.top_title_hospType {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-dimgray-100);
+  margin-top: 5px;
+}
+.top_icons {
+  position: relative;
+  top: 10px;
+}
+.top_icons_call {
+  margin-right: 5px;
+}
+.hospital_detail_linebox {
+  display: flex;
+  height: 1px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.hospital_detail_line {
+  border-top: 1px solid var(--color-gainsboro-300);
+  width: 300px;
+  box-sizing: border-box;
+  height: 1px;
+}
+.hospital_detail_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.body_title {
+  font-size: var(--font-size-smi);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-gainsboro-300);
+  margin-bottom: 10px;
+}
+.body_cards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.body_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 66px;
+  height: 124px;
+  border-radius: var(--br-40xl);
+  background-color: var(--color-white);
+}
+.body_card_number,
+.body_card_title {
+  text-align: center;
+  font-weight: 600;
+}
+.body_card_title {
+  font-size: var(--font-size-smi);
+  width: 47px;
+  margin-bottom: 3px;
+}
+.body_card_number {
+  color: var(--color-darkorange);
+  font-size: var(--font-size-xl);
+}
+.body_notification {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: var(--font-size-4xs);
+  font-weight: 500;
+  color: var(--color-dimgray-100);
+  margin-right: 28px;
+}
+
+.hospital_detail_bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+.bottom_title {
+  font-weight: 600;
+  font-size: var(--font-size-smi);
+  border-bottom: 1px solid var(--color-gainsboro-300);
+  margin-bottom: 10px;
+}
+.bottom_search {
+  display: flex;
+  flex-direction: row;
+  width: 310px;
+}
+.bottom_search_inputbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.bottom_search_input {
+  border: none;
+  width: 220px;
+  height: 22px;
+  padding-left: 22px;
+}
+.bottom_search_icon {
+  position: relative;
+  left: 18px;
+}
+.bottom_search_button {
+  border-radius: var(--br-3xs);
+  background-color: var(--color-royalblue-100);
+  width: 47px;
+  height: 24px;
+  font-weight: 600;
+  font-size: var(--font-size-3xs);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom_listview {
+  width: inherit;
+  height: 260px;
+  overflow-y: auto;
+  border-bottom: 5px solid gray;
+}
+.bottom_listview::-webkit-scrollbar {
+  display: none;
+}
+
+.groupChild {
   position: absolute;
   top: 0;
 }
@@ -12,13 +218,6 @@
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
-}
-.lifelink {
-  left: 37px;
-  font-family: var(--font-baloo-bhaijaan);
-  color: var(--color-red);
-  display: inline-block;
-  width: 96px;
 }
 .groupItem {
   position: absolute;
@@ -317,7 +516,7 @@
   top: calc(50% - 6px);
   left: calc(50% + 118.3px);
   border-radius: var(--br-xl);
-  width: 12.6px;
+  width: 12.7px;
   height: 12.7px;
 }
 .groupChild10,
@@ -442,34 +641,4 @@
   width: 300px;
   height: 301px;
   font-size: var(--font-size-smi);
-}
-.groupParent {
-  position: relative;
-  width: 335px;
-  height: 745px;
-}
-.div,
-.inner {
-  display: flex;
-  align-items: center;
-}
-.inner {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.div {
-  position: relative;
-  background-color: var(--color-white);
-  width: 100%;
-  height: 898px;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: var(--padding-11xl) var(--padding-4xl);
-  box-sizing: border-box;
-  text-align: left;
-  font-size: var(--font-size-5xl);
-  color: var(--color-black);
-  font-family: var(--font-inter);
 }
