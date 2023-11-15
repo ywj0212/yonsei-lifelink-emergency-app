@@ -430,7 +430,6 @@
   height: 108px;
 }
 .child,
-.div25,
 .div26 {
   position: absolute;
 }
@@ -441,7 +440,8 @@
   font-weight: 800;
 }
 .div25 {
-  top: 490px;
+  position: fixed;
+  top: 500px;
   left: 236px;
   width: 108px;
   height: 108px;

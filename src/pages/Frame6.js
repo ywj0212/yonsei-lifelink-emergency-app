@@ -84,18 +84,18 @@ const Frame6 = () => {
               </Link>
             ))}
           </div>
-          <Link to="/pati-info">
-            <div className={styles.div25}>
-              <div className={styles.child} />
-              <div className={styles.div26}>
-                <p className={styles.p}>환자</p>
-                <p className={styles.p}>정보</p>
-                <p className={styles.p}>입력</p>
-              </div>
-            </div>
-          </Link>
         </div>
       </div>
+      <Link to="/pati-info">
+        <div className={styles.div25}>
+          <div className={styles.child} />
+          <div className={styles.div26}>
+            <p className={styles.p}>환자</p>
+            <p className={styles.p}>정보</p>
+            <p className={styles.p}>입력</p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 };
