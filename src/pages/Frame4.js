@@ -6,14 +6,14 @@ const Frame4 = ({ onUpdate }) => {
   const [sex, setSex] = useState(null);
   const [birth, setBirth] = useState('');
   const [name, setName] = useState('');
-  const [patiInfoList, setPatiInfoList] = useState(null);
+  //const [patiInfoList, setPatiInfoList] = useState(null);
   const onClicked = () => {
     const newPatiInfoList = {
       name: `${name}`,
       birth: 123 - (parseInt(birth.substring(0, 2)) + 100) + 1,
       sex: `${sex}`,
     };
-    setPatiInfoList(newPatiInfoList);
+    // setPatiInfoList(newPatiInfoList);
     onUpdate(newPatiInfoList);
   };
   const onNameChanged = (event) => {

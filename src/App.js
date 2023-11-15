@@ -16,6 +16,7 @@ import Frame6 from './pages/Frame6';
 import Frame7 from './pages/Frame7';
 import Transiting from './pages/Transiting';
 import Map from './pages/Map';
+import axios from 'axios';
 
 function App() {
   const action = useNavigationType();
@@ -39,6 +40,7 @@ function App() {
   useEffect(() => {
     fetch('https://lifelink-api.mirix.kr/app/setdestination', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: totalList,
     })
       .then((res) => {
@@ -118,6 +120,7 @@ function App() {
   useEffect(() => {
     fetch('https://lifelink-api.mirix.kr/app/test/', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         latitude: 37.38252,
         longitude: 126.672303,
@@ -126,8 +129,8 @@ function App() {
     })
       .then((res) => res.json())
       .then((res) => console.log(res));
-    // Hide splash screen after a delay (e.g., 2000 milliseconds)
 
+    // Hide splash screen after a delay (e.g., 1000 milliseconds)
     const timeoutId = setTimeout(() => {
       setShowSplash(false);
     }, 1000);
