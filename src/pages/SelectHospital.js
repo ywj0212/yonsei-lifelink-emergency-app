@@ -1,11 +1,19 @@
-import styles from './Frame.module.css';
+import styles from './SelectHospital.module.css';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import DoctorCard from '../components/DoctorCard';
 
-const Frame = () => {
+const SelectHospital = ({ totalList }) => {
   const location = useLocation();
+  const newList = { ...location.state, ...totalList };
+  const [transInfo, setTransInfo] = useState({});
+  const [isTrans, setIsTrans] = useState(false);
+  const [ranValue1, setRanValue1] = useState(0);
+  const [ranValue2, setRanValue2] = useState(0);
+  const [ranValue3, setRanValue3] = useState(0);
+  const [ranValue4, setRanValue4] = useState(0);
   const getClassNameBasedOnValue = (value) => {
     if (value >= 0.75) {
       return styles.colorLimegreen;
@@ -17,7 +25,29 @@ const Frame = () => {
       return styles.colorRed;
     }
   };
+  const onClicked = () => {
+    setIsTrans((prev) => !prev);
+  };
+  useEffect(() => {
+    if (isTrans) {
+      fetch('https://lifelink-api.mirix.kr/app/setdestination', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newList),
+      })
+        .then((res) => {
+          res.json();
+        })
+        .then((res) => setTransInfo(res));
+    } else console.log('Hello!');
+  }, [isTrans]);
 
+  useEffect(() => {
+    setRanValue1(Math.random());
+    setRanValue2(Math.random());
+    setRanValue3(Math.random());
+    setRanValue4(Math.random());
+  }, []);
   return (
     <div className={styles.div}>
       <div className={styles.inner}>
@@ -74,9 +104,9 @@ const Frame = () => {
                   <div
                     className={`${
                       styles.body_card_number
-                    } ${getClassNameBasedOnValue(Math.random())}`}
+                    } ${getClassNameBasedOnValue(ranValue3)}`}
                   >
-                    {Math.floor(Math.random() * 50)}
+                    {Math.floor(ranValue1 * 50)}
                   </div>
                 </div>
                 <div className={styles.body_card}>
@@ -97,9 +127,9 @@ const Frame = () => {
                   <div
                     className={`${
                       styles.body_card_number
-                    } ${getClassNameBasedOnValue(Math.random())}`}
+                    } ${getClassNameBasedOnValue(ranValue4)}`}
                   >
-                    {Math.floor(Math.random() * 10) + 1}
+                    {Math.floor(ranValue2 * 10)}
                   </div>
                 </div>
               </div>
@@ -111,6 +141,23 @@ const Frame = () => {
               <div className={styles.hospital_detail_line}> </div>
             </div>
             <div className={styles.hospital_detail_bottom}>
+              <div className={styles.transInfo_table}>
+                <div
+                  className={`${styles.trans_trigger} ${
+                    isTrans
+                      ? styles.trans_trigger_red
+                      : styles.trans_trigger_blue
+                  }`}
+                  onClick={onClicked}
+                >
+                  {isTrans ? '이송 중단' : '이송병원확정'}
+                </div>
+                {isTrans ? null : (
+                  <div className={styles.time}>
+                    {transInfo.estimatedArrival}
+                  </div>
+                )}
+              </div>
               <div className={styles.bottom_title}>의료진 검색</div>
               <div className={styles.bottom_search}>
                 <div className={styles.bottom_search_inputbox}>
@@ -139,4 +186,4 @@ const Frame = () => {
   );
 };
 
-export default Frame;
+export default SelectHospital;

@@ -3,8 +3,8 @@ import {
   Routes,
   Route,
   useNavigationType,
-  useLocation,
   Navigate,
+  useLocation,
 } from 'react-router-dom';
 import Frame from './pages/Frame';
 import Frame1 from './pages/Frame1';
@@ -16,7 +16,7 @@ import Frame6 from './pages/Frame6';
 import Frame7 from './pages/Frame7';
 import Transiting from './pages/Transiting';
 import Map from './pages/Map';
-import axios from 'axios';
+import SelectHospital from './pages/SelectHospital';
 
 function App() {
   const action = useNavigationType();
@@ -24,13 +24,18 @@ function App() {
   const pathname = location.pathname;
   const [showSplash, setShowSplash] = useState(true);
   const [totalList, setTotalList] = useState({});
+  const [midList, setMidList] = useState({});
+  const [lastList, setLastList] = useState({});
   const [isTotal, setIsTotal] = useState(false);
+  const [initList, setInitList] = useState();
 
   // Add patient info- to TotalList
   const updateTotalList = (newData) => {
     setTotalList((prevData) => ({ ...prevData, ...newData }));
   };
-
+  const updateMidList = (newData) => {
+    setMidList((prevData) => ({ ...prevData, ...newData }));
+  };
   // Check whether patient info- inputing is end
   const onFinalCheck = () => {
     setIsTotal((prev) => !prev);
@@ -38,15 +43,15 @@ function App() {
 
   // If patient info- inputing is end, POST patient info- and return hospital list
   useEffect(() => {
-    fetch('https://lifelink-api.mirix.kr/app/setdestination', {
+    fetch('https://lifelink-api.mirix.kr/app/gethospitals', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: totalList,
+      body: JSON.stringify(midList),
     })
+      .then((res) => res.json())
       .then((res) => {
-        res.json();
-      })
-      .then((res) => console.log(res));
+        setLastList(res);
+      });
   }, [isTotal]);
 
   useEffect(() => {
@@ -118,7 +123,7 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
-    fetch('https://lifelink-api.mirix.kr/app/test/', {
+    fetch('https://lifelink-api.mirix.kr/app/gethospitals/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -128,7 +133,9 @@ function App() {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        setInitList(res);
+      });
 
     // Hide splash screen after a delay (e.g., 1000 milliseconds)
     const timeoutId = setTimeout(() => {
@@ -144,10 +151,14 @@ function App() {
       <Route
         path="/"
         element={
-          showSplash ? <Frame7 /> : <Navigate to="/main" replace={true} />
+          showSplash ? (
+            <Frame7 />
+          ) : (
+            <Navigate to="/main" state={initList} replace={true} />
+          )
         }
       />
-      <Route path="/main" exact element={<Frame6 />} />
+      <Route path="/main" state={initList} exact element={<Frame6 />} />
       <Route path="/hospital-detail" element={<Frame />} />
       <Route
         path="/pati-info"
@@ -157,16 +168,31 @@ function App() {
       <Route
         path="/map"
         element={
-          <Map onUpdate={updateTotalList} onFinalUpdate={onFinalCheck} />
+          <Map
+            onUpdate={updateTotalList}
+            onFinalUpdate={onFinalCheck}
+            onMidUpdate={updateMidList}
+            lastList={lastList}
+          />
         }
       />
-      <Route path="/prektas" element={<PreKtas onUpdate={updateTotalList} />} />
+      <Route
+        path="/prektas"
+        element={
+          <PreKtas onUpdate={updateTotalList} onMidUpdate={updateMidList} />
+        }
+      />
       <Route
         path="/department"
         element={<Frame2 onUpdate={updateTotalList} />}
       />
       <Route path="/recom-hospital" element={<Frame1 />} />
       <Route path="/transiting" element={<Transiting />} />
+      <Route
+        path="/selecthospital"
+        state={totalList}
+        element={<SelectHospital totalList={totalList} />}
+      />
     </Routes>
   );
 }

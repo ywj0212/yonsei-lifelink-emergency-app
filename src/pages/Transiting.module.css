@@ -38,7 +38,7 @@
   box-sizing: border-box;
 }
 
-.text{
+.text {
   font-family: var(--font-inter);
   position: absolute;
   width: 100%;

@@ -19,11 +19,11 @@ const Frame3 = ({ onUpdate }) => {
   const onClicked = () => {
     const newSympInfoList = {
       gido: `${gido}`,
-      isBreathing: `${isBreathing}`,
+      isBreathing: Boolean(`${isBreathing}`),
       breathDepth: `${breathDepth}`,
       bloodPressure: `${bloodPressure}`,
       beat: `${beat}`,
-      isBleeding: `${isBleeding}`,
+      isBleeding: Boolean(`${isBleeding}`),
       consciousness: `${consciousness}`,
     };
     setSympInfoList(newSympInfoList);

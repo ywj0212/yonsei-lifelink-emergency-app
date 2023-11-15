@@ -10,8 +10,9 @@ const Frame4 = ({ onUpdate }) => {
   const onClicked = () => {
     const newPatiInfoList = {
       name: `${name}`,
-      birth: 123 - (parseInt(birth.substring(0, 2)) + 100) + 1,
+      age: 123 - (parseInt(birth.substring(0, 2)) + 100) + 1,
       sex: `${sex}`,
+      hospitalId: 1,
     };
     // setPatiInfoList(newPatiInfoList);
     onUpdate(newPatiInfoList);

@@ -3,19 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 export default function HospitalCard({
-  hospName,
+  name,
   hospType,
   congest,
-  emBed_current = '-',
-  emBed_total = '-',
-  icuBed_current = '-',
-  icuBed_total = '-',
-  trasf_pati,
+  emBedExists = '-',
+  emBedOccupied = '-',
+  icuBedExists = '-',
+  icuBedOccupied = '-',
+  trasferringPatient,
 }) {
   return (
     <div className={styles.hospitalCard}>
       <div className={styles.card_top}>
-        <div className={styles.hospitalName}>{hospName}</div>
+        <div className={styles.hospitalName}>{name}</div>
         <div className={styles.hospitalType}>{hospType}</div>
       </div>
       <div className={styles.card_body}>
@@ -63,20 +63,22 @@ export default function HospitalCard({
         <div className={styles.card_emBed}>
           <div className={styles.card_emBed_title}>응급실 병상</div>
           <div className={styles.card_emBed_number}>
-            <div className={styles.card_emBed_current}>{emBed_current}</div>
-            <div className={styles.card_emBed_total}>/{emBed_total}</div>
+            <div className={styles.card_emBed_current}>{emBedExists}</div>
+            <div className={styles.card_emBed_total}>/{emBedOccupied}</div>
           </div>
         </div>
         <div className={styles.card_icuBed}>
           <div className={styles.card_icuBed_title}>중환자실 병상</div>
           <div className={styles.card_icuBed_number}>
-            <div className={styles.card_icuBed_current}>{icuBed_current}</div>
-            <div className={styles.card_icuBed_total}>/{icuBed_total}</div>
+            <div className={styles.card_icuBed_current}>{icuBedExists}</div>
+            <div className={styles.card_icuBed_total}>/{icuBedOccupied}</div>
           </div>
         </div>
         <div className={styles.card_trasfPati}>
           <div className={styles.card_trasfPati_title}>이송 중인 환자</div>
-          <div className={styles.card_trasfPati_number}>{trasf_pati}</div>
+          <div className={styles.card_trasfPati_number}>
+            {trasferringPatient}
+          </div>
           <div className={styles.card_trasfPati_myung}>명</div>
         </div>
       </div>

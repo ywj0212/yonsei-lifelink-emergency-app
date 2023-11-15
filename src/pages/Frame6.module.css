@@ -60,9 +60,6 @@
 .aInner {
   left: 277px;
 }
-.p {
-  margin: 0;
-}
 .div2 {
   position: absolute;
   top: 0;
@@ -420,33 +417,24 @@
   height: 140px;
   font-size: var(--font-size-base);
 }
-.child {
-  top: 0;
-  left: 0;
+
+.div25 {
+  line-height: 22px;
+  font-weight: 800;
   border-radius: 50%;
   background-color: var(--color-red);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   width: 108px;
   height: 108px;
-}
-.child,
-.div26 {
-  position: absolute;
-}
-.div26 {
-  top: 21px;
-  left: 35px;
-  line-height: 22px;
-  font-weight: 800;
-}
-.div25 {
   position: fixed;
   top: 530px;
   left: 240px;
-  width: 108px;
-  height: 108px;
   font-size: var(--font-size-xl);
   color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .groupParent {
   position: relative;
