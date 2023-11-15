@@ -14,7 +14,7 @@
   overflow: hidden;
   flex-direction: column;
   justify-content: flex-start;
-  padding: var(--padding-11xl) var(--padding-4xl);
+  padding: var(--padding-11xl) 0;
   box-sizing: border-box;
   text-align: left;
   font-size: var(--font-size-5xs);
