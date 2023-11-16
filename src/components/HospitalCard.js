@@ -63,15 +63,15 @@ export default function HospitalCard({
         <div className={styles.card_emBed}>
           <div className={styles.card_emBed_title}>응급실 병상</div>
           <div className={styles.card_emBed_number}>
-            <div className={styles.card_emBed_current}>{emBedOccupied}</div>
-            <div className={styles.card_emBed_total}>/{emBedExists}</div>
+            <div className={styles.card_emBed_current}>{emBedExists}</div>
+            <div className={styles.card_emBed_total}>/{emBedOccupied}</div>
           </div>
         </div>
         <div className={styles.card_icuBed}>
           <div className={styles.card_icuBed_title}>중환자실 병상</div>
           <div className={styles.card_icuBed_number}>
-            <div className={styles.card_icuBed_current}>{icuBedOccupied}</div>
-            <div className={styles.card_icuBed_total}>/{icuBedExists}</div>
+            <div className={styles.card_icuBed_current}>{icuBedExists}</div>
+            <div className={styles.card_icuBed_total}>/{icuBedOccupied}</div>
           </div>
         </div>
         <div className={styles.card_trasfPati}>
