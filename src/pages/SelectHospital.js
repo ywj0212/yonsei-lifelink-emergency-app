@@ -14,9 +14,7 @@ const SelectHospital = () => {
   const [ranValue2, setRanValue2] = useState(0);
   const [ranValue3, setRanValue3] = useState(0);
   const [ranValue4, setRanValue4] = useState(0);
-  const [estimatedTime, setEstimatedTime] = useState(0);
-  const [minute, setMinute] = useState(0);
-  const [second, setSecond] = useState(0);
+
   const [patientId, setPatientId] = useState(null);
 
   const getClassNameBasedOnValue = (value) => {
@@ -40,30 +38,23 @@ const SelectHospital = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...location.state,
-          hospitalId: location.state.hospital.id,
+          hospitalId: location.state.hospital.id
         }),
       })
         .then((res) => res.json())
-        .then((res) => {
-          setPatientId(res.patientId);
-          setEstimatedTime(res.estimatedArrival);
-        });
+        .then((res) => setPatientId(res.patientId));
     } else {
       fetch('https://lifelink-api.mirix.kr/app/stoptransfer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           patientId: patientId,
-          hospitalId: location.state.hospital.id,
+          hospitalId: location.state.hospital.id
         }),
-      });
+      })
     }
   }, [isTrans]);
 
-  useEffect(() => {
-    setMinute(Math.floor(estimatedTime));
-    setSecond(Math.floor((estimatedTime % 1) * 100));
-  }, [estimatedTime]);
   useEffect(() => {
     setRanValue1(Math.random());
     setRanValue2(Math.random());
@@ -106,8 +97,7 @@ const SelectHospital = () => {
             </div>
             <div className={styles.hospital_detail_body}>
               <div className={styles.body_title}>
-                {location.state.hospital.name}{' '}
-                {location.state.hospital.hospType} 현황
+                {location.state.hospital.name} {location.state.hospital.hospType} 현황
               </div>
               <div className={styles.body_cards}>
                 <div className={styles.body_card}>
@@ -116,8 +106,7 @@ const SelectHospital = () => {
                     className={`${
                       styles.body_card_number
                     } ${getClassNameBasedOnValue(
-                      location.state.hospital.emBedExists /
-                        location.state.hospital.emBedOccupied
+                      location.state.hospital.emBedExists / location.state.hospital.emBedOccupied
                     )}`}
                   >
                     {location.state.hospital.emBedExists}
@@ -176,14 +165,11 @@ const SelectHospital = () => {
                 >
                   {isTrans ? '이송 중단' : '이송병원확정'}
                 </div>
-                {isTrans ? (
+                {isTrans ? null : (
                   <div className={styles.time}>
-                    <div className={styles.number_title}>예상 도착 시간</div>
-                    <div className={styles.number}>
-                      {minute}분 {second}초
-                    </div>
+                    {transInfo?.estimatedArrival}
                   </div>
-                ) : null}
+                )}
               </div>
               <div className={styles.bottom_title}>의료진 검색</div>
               <div className={styles.bottom_search}>
