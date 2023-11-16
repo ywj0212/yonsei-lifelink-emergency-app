@@ -17,7 +17,7 @@ const Frame1 = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res)
+        console.log(res)
         setHospitalList(res);
       });
   }, []);
@@ -31,7 +31,7 @@ const Frame1 = () => {
             <div className={styles.lifelink}>LiFELiNK</div>
           </div>
           <div className={styles.hospital_listview}>
-            {hospitalList.map((hospital, index) => (
+            {hospitalList?.map((hospital, index) => (
               <Link
                 key={index}
                 to={'/selecthospital'}

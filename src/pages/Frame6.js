@@ -15,7 +15,7 @@ const Frame6 = () => {
             <div className={styles.lifelink}>LiFELiNK</div>
           </div>
           <div className={styles.hospital_listview}>
-            {newList.map((hospital, index) => (
+            {newList?.map((hospital, index) => (
                 <Link
                   key={index}
                   to={'/hospital-detail'}
