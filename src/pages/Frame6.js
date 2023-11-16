@@ -15,15 +15,24 @@ const Frame6 = () => {
           </div>
           <div className={styles.hospital_listview}>
             {newList.map((hospital, index) => (
-              <Link
-                key={index}
-                to={'/hospital-detail'}
-                state={{ ...hospital }}
-                style={{ textDecoration: 'none', color: 'inherit' }}
-              >
-                <HospitalCard {...hospital} />
-              </Link>
-            ))}
+                <Link
+                  key={index}
+                  to={'/hospital-detail'}
+                  state={{ ...hospital }}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                  <HospitalCard
+                    name={hospital.id === 0 ? (hospital.name + "★") : hospital.name}
+                    hospType={hospital.hospType}
+                    currentCongestion={hospital.currentCongestion}
+                    emBedExists={hospital.emBedExists}
+                    emBedOccupied={hospital.emBedOccupied}
+                    icuBedExists={hospital.icuBedExists}
+                    icuBedOccupied={hospital.icuBedOccupied}
+                    trasferringPatient={hospital.trasferringPatient} />
+                </Link>
+              ))
+            }
           </div>
         </div>
       </div>

@@ -29,17 +29,20 @@ const SelectHospital = ({ totalList }) => {
     setIsTrans((prev) => !prev);
   };
   useEffect(() => {
-    if (isTrans) {
-      fetch('https://lifelink-api.mirix.kr/app/setdestination', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newList),
-      })
-        .then((res) => {
-          res.json();
-        })
-        .then((res) => setTransInfo(res));
-    } else console.log('Hello!');
+    console.log(newList);
+    // if (isTrans) {
+    //   fetch('https://lifelink-api.mirix.kr/app/setdestination', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(newList),
+    //   })
+    //     .then((res) => {
+    //       res.json();
+    //     })
+    //     .then((res) => setTransInfo(res));
+    // } else {
+      
+    // }
   }, [isTrans]);
 
   useEffect(() => {

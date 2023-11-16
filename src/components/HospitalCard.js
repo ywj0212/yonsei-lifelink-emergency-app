@@ -5,7 +5,7 @@ import { faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 export default function HospitalCard({
   name,
   hospType,
-  congest,
+  currentCongestion,
   emBedExists = '-',
   emBedOccupied = '-',
   icuBedExists = '-',
@@ -24,7 +24,7 @@ export default function HospitalCard({
           <div className={styles.card_congest_blocks}>
             <div
               className={`${
-                congest == 3
+                currentCongestion === 3
                   ? styles.card_congest_blocks_red
                   : styles.card_congest_blocks_normal
               }`}
@@ -33,7 +33,7 @@ export default function HospitalCard({
             </div>
             <div
               className={`${
-                congest == 2
+                currentCongestion === 2
                   ? styles.card_congest_blocks_org
                   : styles.card_congest_blocks_normal
               }`}
@@ -42,7 +42,7 @@ export default function HospitalCard({
             </div>
             <div
               className={`${
-                congest == 1
+                currentCongestion === 1
                   ? styles.card_congest_blocks_yel
                   : styles.card_congest_blocks_normal
               }`}
@@ -51,7 +51,7 @@ export default function HospitalCard({
             </div>
             <div
               className={`${
-                congest == 0
+                currentCongestion === 0
                   ? styles.card_congest_blocks_gre
                   : styles.card_congest_blocks_normal
               }`}
@@ -63,15 +63,15 @@ export default function HospitalCard({
         <div className={styles.card_emBed}>
           <div className={styles.card_emBed_title}>응급실 병상</div>
           <div className={styles.card_emBed_number}>
-            <div className={styles.card_emBed_current}>{emBedExists}</div>
-            <div className={styles.card_emBed_total}>/{emBedOccupied}</div>
+            <div className={styles.card_emBed_current}>{emBedOccupied}</div>
+            <div className={styles.card_emBed_total}>/{emBedExists}</div>
           </div>
         </div>
         <div className={styles.card_icuBed}>
           <div className={styles.card_icuBed_title}>중환자실 병상</div>
           <div className={styles.card_icuBed_number}>
-            <div className={styles.card_icuBed_current}>{icuBedExists}</div>
-            <div className={styles.card_icuBed_total}>/{icuBedOccupied}</div>
+            <div className={styles.card_icuBed_current}>{icuBedOccupied}</div>
+            <div className={styles.card_icuBed_total}>/{icuBedExists}</div>
           </div>
         </div>
         <div className={styles.card_trasfPati}>
