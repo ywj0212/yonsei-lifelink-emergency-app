@@ -5,16 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import DoctorCard from '../components/DoctorCard';
 
-const SelectHospital = ({ totalList }) => {
+const SelectHospital = () => {
   const location = useLocation();
-  console.log(location.state);
-  const newList = { ...location.state, ...totalList };
+
   const [transInfo, setTransInfo] = useState({});
   const [isTrans, setIsTrans] = useState(false);
   const [ranValue1, setRanValue1] = useState(0);
   const [ranValue2, setRanValue2] = useState(0);
   const [ranValue3, setRanValue3] = useState(0);
   const [ranValue4, setRanValue4] = useState(0);
+
+  const [patientId, setPatientId] = useState(null);
+
   const getClassNameBasedOnValue = (value) => {
     if (value >= 0.75) {
       return styles.colorLimegreen;
@@ -30,19 +32,26 @@ const SelectHospital = ({ totalList }) => {
     setIsTrans((prev) => !prev);
   };
   useEffect(() => {
-    console.log(newList);
     if (isTrans) {
       fetch('https://lifelink-api.mirix.kr/app/setdestination', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newList),
+        body: JSON.stringify({
+          ...location.state,
+          hospitalId: location.state.hospital.id
+        }),
       })
-        .then((res) => {
-          res.json();
-        })
-        .then((res) => setTransInfo(res));
+        .then((res) => res.json())
+        .then((res) => setPatientId(res.patientId));
     } else {
-      
+      fetch('https://lifelink-api.mirix.kr/app/stoptransfer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patientId: patientId,
+          hospitalId: location.state.hospital.id
+        }),
+      })
     }
   }, [isTrans]);
 
@@ -64,10 +73,10 @@ const SelectHospital = ({ totalList }) => {
             <div className={styles.hospital_detail_top}>
               <div className={styles.top_title}>
                 <div className={styles.top_title_hospName}>
-                  {location.state.name}
+                  {location.state.hospital.name}
                 </div>
                 <div className={styles.top_title_hospType}>
-                  {location.state.hospType}
+                  {location.state.hospital.hospType}
                 </div>
               </div>
               <div className={styles.top_icons}>
@@ -88,7 +97,7 @@ const SelectHospital = ({ totalList }) => {
             </div>
             <div className={styles.hospital_detail_body}>
               <div className={styles.body_title}>
-                {location.state.name} {location.state.hospType} 현황
+                {location.state.hospital.name} {location.state.hospital.hospType} 현황
               </div>
               <div className={styles.body_cards}>
                 <div className={styles.body_card}>
@@ -97,10 +106,10 @@ const SelectHospital = ({ totalList }) => {
                     className={`${
                       styles.body_card_number
                     } ${getClassNameBasedOnValue(
-                      location.state.emBedExists / location.state.emBedOccupied
+                      location.state.hospital.emBedExists / location.state.hospital.emBedOccupied
                     )}`}
                   >
-                    {location.state.emBedExists}
+                    {location.state.hospital.emBedExists}
                   </div>
                 </div>
                 <div className={styles.body_card}>
@@ -119,11 +128,11 @@ const SelectHospital = ({ totalList }) => {
                     className={`${
                       styles.body_card_number
                     } ${getClassNameBasedOnValue(
-                      location.state.icuBedExists /
-                        location.state.icuBedOccupied
+                      location.state.hospital.icuBedExists /
+                        location.state.hospital.icuBedOccupied
                     )}`}
                   >
-                    {location.state.icuBedExists}
+                    {location.state.hospital.icuBedExists}
                   </div>
                 </div>
                 <div className={styles.body_card}>

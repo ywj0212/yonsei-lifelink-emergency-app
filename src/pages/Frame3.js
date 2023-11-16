@@ -404,6 +404,19 @@ const Frame3 = () => {
 
           <Link
             to="/prektas"
+            onClick={(e) => {
+              if (
+                gido === null ||
+                isBreathing === null ||
+                breathDepth === null ||
+                bloodPressure === null ||
+                beat === null ||
+                isBleeding === null ||
+                consciousness === null
+              )
+                e.preventDefault();
+              
+            }}
             state={{
               gido: gido,
               isBreathing: isBreathing,

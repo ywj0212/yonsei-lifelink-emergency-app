@@ -35,7 +35,10 @@ const Frame1 = () => {
               <Link
                 key={index}
                 to={'/selecthospital'}
-                state={{... hospital}}
+                state={{
+                  ...location.state,
+                  hospital: hospital
+                }}
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <HospitalCard
