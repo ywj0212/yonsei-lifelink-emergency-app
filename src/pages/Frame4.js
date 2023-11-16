@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Frame4.module.css';
 import { Link } from 'react-router-dom';
 
-const Frame4 = ({ onUpdate }) => {
+const Frame4 = () => {
   const [sex, setSex] = useState(null);
   const [birth, setBirth] = useState('');
   const [name, setName] = useState('');
-  //const [patiInfoList, setPatiInfoList] = useState(null);
-  const onClicked = () => {
-    const newPatiInfoList = {
-      name: `${name}`,
-      age: 123 - (parseInt(birth.substring(0, 2)) + 100) + 1,
-      sex: `${sex}`,
-      hospitalId: 1,
-    };
-    // setPatiInfoList(newPatiInfoList);
-    onUpdate(newPatiInfoList);
-  };
+  // const [patiInfoList, setPatiInfoList] = useState(null);
   const onNameChanged = (event) => {
     setName(event.target.value);
   };
-  const onBirthChanged = (event) => [setBirth(event.target.value)];
+  const onBirthChanged = (event) => {
+    setBirth(event.target.value)
+  };
 
   return (
     <div className={styles.div}>
@@ -89,8 +81,13 @@ const Frame4 = ({ onUpdate }) => {
           <Link
             to="/symptom"
             onClick={(e) => {
-              if (sex == null) e.preventDefault();
-              onClicked();
+              if (name == "" || birth == "" || sex == null)
+                e.preventDefault();
+            }}
+            state={{
+              name: name,
+              age: 123 - (parseInt(birth.substring(0, 2)) + 100) + 1,
+              sex: sex,
             }}
           >
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />

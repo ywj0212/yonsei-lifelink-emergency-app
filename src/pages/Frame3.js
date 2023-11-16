@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Frame3.module.css';
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom"
 
-const Frame3 = ({ onUpdate }) => {
+const Frame3 = () => {
   const [gido, setGido] = useState(null);
 
   const [isBreathing, setIsBreathing] = useState(null);
@@ -14,21 +15,8 @@ const Frame3 = ({ onUpdate }) => {
 
   const [consciousness, setConsciousness] = useState(null);
 
-  const [sympInfoList, setSympInfoList] = useState(null);
-
-  const onClicked = () => {
-    const newSympInfoList = {
-      gido: `${gido}`,
-      isBreathing: Boolean(`${isBreathing}`),
-      breathDepth: `${breathDepth}`,
-      bloodPressure: `${bloodPressure}`,
-      beat: `${beat}`,
-      isBleeding: Boolean(`${isBleeding}`),
-      consciousness: `${consciousness}`,
-    };
-    setSympInfoList(newSympInfoList);
-    onUpdate(newSympInfoList);
-  };
+  const location = useLocation();
+  console.log(location.state);
 
   return (
     <div className={styles.div}>
@@ -416,18 +404,15 @@ const Frame3 = ({ onUpdate }) => {
 
           <Link
             to="/prektas"
-            onClick={(e) => {
-              if (
-                gido === null ||
-                isBreathing === null ||
-                breathDepth === null ||
-                bloodPressure === null ||
-                beat === null ||
-                isBleeding === null ||
-                consciousness === null
-              )
-                e.preventDefault();
-              onClicked();
+            state={{
+              gido: gido,
+              isBreathing: isBreathing,
+              breathDepth: breathDepth,
+              bloodPressure: bloodPressure,
+              beat: beat,
+              isBleeding: isBleeding,
+              consciousness: consciousness,
+              ...location.state
             }}
           >
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />

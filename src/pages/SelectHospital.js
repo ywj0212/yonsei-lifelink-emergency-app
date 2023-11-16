@@ -7,6 +7,7 @@ import DoctorCard from '../components/DoctorCard';
 
 const SelectHospital = ({ totalList }) => {
   const location = useLocation();
+  console.log(location.state);
   const newList = { ...location.state, ...totalList };
   const [transInfo, setTransInfo] = useState({});
   const [isTrans, setIsTrans] = useState(false);
@@ -30,19 +31,19 @@ const SelectHospital = ({ totalList }) => {
   };
   useEffect(() => {
     console.log(newList);
-    // if (isTrans) {
-    //   fetch('https://lifelink-api.mirix.kr/app/setdestination', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(newList),
-    //   })
-    //     .then((res) => {
-    //       res.json();
-    //     })
-    //     .then((res) => setTransInfo(res));
-    // } else {
+    if (isTrans) {
+      fetch('https://lifelink-api.mirix.kr/app/setdestination', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newList),
+      })
+        .then((res) => {
+          res.json();
+        })
+        .then((res) => setTransInfo(res));
+    } else {
       
-    // }
+    }
   }, [isTrans]);
 
   useEffect(() => {
@@ -157,7 +158,7 @@ const SelectHospital = ({ totalList }) => {
                 </div>
                 {isTrans ? null : (
                   <div className={styles.time}>
-                    {transInfo.estimatedArrival}
+                    {transInfo?.estimatedArrival}
                   </div>
                 )}
               </div>

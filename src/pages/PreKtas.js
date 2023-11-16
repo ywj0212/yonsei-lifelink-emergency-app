@@ -1,17 +1,14 @@
 import styles from './PreKtas.module.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useLocation } from "react-router-dom"
 
-const PreKtas = ({ onUpdate, onMidUpdate }) => {
+const PreKtas = () => {
   const [preKtas, setPreKtas] = useState(null);
 
-  const onClicked = () => {
-    const newPreKTASList = {
-      preKTAS: parseInt(`${preKtas}`),
-    };
-    onUpdate(newPreKTASList);
-    onMidUpdate(newPreKTASList);
-  };
+  const location = useLocation();
+  console.log(location.state);
+
   return (
     <div className={styles.preKtas}>
       <div className={styles.preKtasInner}>
@@ -74,7 +71,10 @@ const PreKtas = ({ onUpdate, onMidUpdate }) => {
             to="/department"
             onClick={(e) => {
               if (preKtas == null) e.preventDefault();
-              onClicked();
+            }}
+            state={{
+                preKTAS: preKtas,
+                ...location.state
             }}
           >
             <img className={styles.groupIcon} alt="" src="/group-80.svg" />

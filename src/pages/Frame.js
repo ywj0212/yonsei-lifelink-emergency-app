@@ -6,6 +6,7 @@ import DoctorCard from '../components/DoctorCard';
 
 const Frame = () => {
   const location = useLocation();
+  console.log(location.state);
   const getClassNameBasedOnValue = (value) => {
     if (value >= 0.75) {
       return styles.colorLimegreen;

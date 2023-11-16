@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Frame2.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const departmentArray = [
   "내과",
@@ -55,6 +55,9 @@ const Frame2 = () => {
   const [dropDownList, setDropDownList] = useState(departmentArray);
   const [dropDownItemIndex, setDropDownItemIndex] = useState(-1);
 
+  const location = useLocation();
+  console.log(location.state);
+
   const showDropDownList = () => {
     if (inputValue === "") {
       setIsHaveInputValue(false);
@@ -103,7 +106,10 @@ const Frame2 = () => {
         <div className={styles.lifelinkParent}>
           <div className={styles.lifelink}>LiFELiNK</div>
           <img className={styles.groupChild} alt="" src="/group-4.svg" />
-          <Link to="/map">
+          <Link
+            to="/map"
+            state={{...location.state}}
+            >
             <img className={styles.groupItem} alt="" src="/group-80.svg" />
           </Link>
 

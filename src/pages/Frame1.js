@@ -1,10 +1,27 @@
 import styles from './Frame1.module.css';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import HospitalCard from '../components/HospitalCard';
-const Frame6 = () => {
+
+const Frame1 = () => {
+  const [hospitalList, setHospitalList] = useState([]);
+  
   const location = useLocation();
   console.log(location.state);
+
+  useEffect(() => {
+    fetch('https://lifelink-api.mirix.kr/app/gethospitals', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(location.state),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        // console.log(res)
+        setHospitalList(res);
+      });
+  }, []);
+
   return (
     <div className={styles.div}>
       <div className={styles.inner}>
@@ -14,7 +31,7 @@ const Frame6 = () => {
             <div className={styles.lifelink}>LiFELiNK</div>
           </div>
           <div className={styles.hospital_listview}>
-            {location.state.map((hospital, index) => (
+            {hospitalList.map((hospital, index) => (
               <Link
                 key={index}
                 to={'/selecthospital'}
@@ -39,4 +56,4 @@ const Frame6 = () => {
   );
 };
 
-export default Frame6;
+export default Frame1;

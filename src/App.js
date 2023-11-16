@@ -22,37 +22,9 @@ function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
+  
   const [showSplash, setShowSplash] = useState(true);
-  const [totalList, setTotalList] = useState({});
-  const [midList, setMidList] = useState({});
-  const [lastList, setLastList] = useState({});
-  const [isTotal, setIsTotal] = useState(false);
   const [initList, setInitList] = useState();
-
-  // Add patient info- to TotalList
-  const updateTotalList = (newData) => {
-    setTotalList((prevData) => ({ ...prevData, ...newData }));
-  };
-  const updateMidList = (newData) => {
-    setMidList((prevData) => ({ ...prevData, ...newData }));
-  };
-  // Check whether patient info- inputing is end
-  const onFinalCheck = () => {
-    setIsTotal((prev) => !prev);
-  };
-
-  // If patient info- inputing is end, POST patient info- and return hospital list
-  useEffect(() => {
-    fetch('https://lifelink-api.mirix.kr/app/gethospitals', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(midList),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setLastList(res);
-      });
-  }, [isTotal]);
 
   useEffect(() => {
     if (action !== 'POP') {
@@ -162,36 +134,30 @@ function App() {
       <Route path="/hospital-detail" element={<Frame />} />
       <Route
         path="/pati-info"
-        element={<Frame4 onUpdate={updateTotalList} />}
+        element={<Frame4/ >}
       />
-      <Route path="/symptom" element={<Frame3 onUpdate={updateTotalList} />} />
+      <Route path="/symptom" element={<Frame3 />} />
       <Route
         path="/map"
         element={
-          <Map
-            onUpdate={updateTotalList}
-            onFinalUpdate={onFinalCheck}
-            onMidUpdate={updateMidList}
-            lastList={lastList}
-          />
+          <Map />
         }
       />
       <Route
         path="/prektas"
         element={
-          <PreKtas onUpdate={updateTotalList} onMidUpdate={updateMidList} />
+          <PreKtas />
         }
       />
       <Route
         path="/department"
-        element={<Frame2 onUpdate={updateTotalList} />}
+        element={<Frame2 />}
       />
       <Route path="/recom-hospital" element={<Frame1 />} />
       <Route path="/transiting" element={<Transiting />} />
       <Route
         path="/selecthospital"
-        state={totalList}
-        element={<SelectHospital totalList={totalList} />}
+        element={<SelectHospital />}
       />
     </Routes>
   );

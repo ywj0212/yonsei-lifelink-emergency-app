@@ -4,6 +4,7 @@ import HospitalCard from '../components/HospitalCard';
 
 const Frame6 = () => {
   const location = useLocation();
+  console.log(location.state);
   const newList = location.state;
   return (
     <div className={styles.div}>

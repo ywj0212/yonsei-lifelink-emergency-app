@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Map.module.css';
 
-function Map({ onUpdate, onFinalUpdate, onMidUpdate, lastList }) {
+function Map({  }) {
   const [localXY, setLocalXY] = useState({ x: null, y: null });
   const [xy, setXY] = useState({ x: 170, y: 416 });
   const [size, setSize] = useState({ x: 339, y: 339 });
   const [gps, setGps] = useState({ latitude: 37.38252, longitude: 126.672303 });
+
+  const location = useLocation();
+  console.log(location.state);
 
   const lt = { x: 37.49397985177132, y: 126.57011010000026 };
   const rb = { x: 37.32058255099964, y: 126.78518280000175 };
@@ -69,15 +72,6 @@ function Map({ onUpdate, onFinalUpdate, onMidUpdate, lastList }) {
                   latitude: lerp(lt.x, rb.x, localXY.x / size.x),
                   longitude: lerp(lt.y, rb.y, localXY.y / size.y),
                 });
-                onUpdate({
-                  latitude: lerp(lt.x, rb.x, localXY.x / size.x),
-                  longitude: lerp(lt.y, rb.y, localXY.y / size.y),
-                });
-                onMidUpdate({
-                  latitude: lerp(lt.x, rb.x, localXY.x / size.x),
-                  longitude: lerp(lt.y, rb.y, localXY.y / size.y),
-                });
-                onFinalUpdate();
               }}
               style={{
                 position: 'absolute',
@@ -88,7 +82,12 @@ function Map({ onUpdate, onFinalUpdate, onMidUpdate, lastList }) {
               }}
             />
 
-            <Link to="/recom-hospital" state={lastList}>
+            <Link to="/recom-hospital"
+              state={{
+                latitude: gps.latitude,
+                longitude: gps.longitude,
+                ...location.state
+              }}>
               <img
                 className={styles.groupItem}
                 style={{ position: 'absolute', top: 540 }}
